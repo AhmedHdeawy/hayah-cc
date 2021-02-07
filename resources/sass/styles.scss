@@ -1,0 +1,1537 @@
+/* Fonts Declaration */
+@font-face {
+	font-family : 'Tajawal';
+	src         : url('/assets/fonts/Tajawal-Light.ttf');
+	font-weight : 300;
+	font-style  : normal;
+}
+
+@font-face {
+	font-family : 'Tajawal';
+	src         : url('/assets/fonts/Tajawal-Regular.ttf');
+	font-weight : 400;
+	font-style  : normal;
+}
+
+@font-face {
+	font-family : 'Tajawal';
+	src         : url('/assets/fonts/Tajawal-Medium.ttf');
+	font-weight : 500;
+	font-style  : normal;
+}
+
+@font-face {
+	font-family : 'Tajawal';
+	src         : url('/assets/fonts/Tajawal-Bold.ttf');
+	font-weight : 700;
+	font-style  : normal;
+}
+
+/* Colors Variables */
+$darkWhite     : #FAF9EF;
+$white         : #FEFEFE;
+$orange        : #F96E31;
+$brightGold    : #E7B41D;
+$gold          : #F6D353;
+$darkBlue      : #003049;
+$black         : #100F05;
+//$purple        : #800080;
+//$brightBlue    : #3E92CC;
+//$red           : #DC3545;
+
+// Border Radius
+$fourRoundness : 4px;
+
+/* Overriding Bootstrap Container Size */
+@media screen and (min-width : 576px) {
+	.container {
+		max-width : 96%;
+		width     : 96%;
+	}
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight : 700;
+}
+
+i, img, a, input, button {
+	display : inline-block;
+
+}
+
+a {
+	color : inherit;
+}
+
+a, button {
+	transition : 0.2s ease-in-out opacity !important;
+
+	&:hover {
+		color   : inherit;
+		opacity : 0.7;
+	}
+}
+
+/* Sass Component */
+/*%formControl {
+	.form-control {
+		background    : $white;
+		border        : 3px solid rgba($white, 0);
+		border-radius : $fourRoundness;
+		box-shadow    : none;
+		font-size     : 14px;
+		font-weight   : 300;
+		height        : 40px;
+		padding       : 0 5px;
+		transition    : 0.2s ease-in-out border-color;
+		width         : 100%;
+
+		&::placeholder {
+			color : rgba($black, 0.5);
+		}
+
+		&:focus {
+			border : 0.2rem solid rgba($black, 0.2);
+		}
+	}
+}*/
+
+%btn {
+	border      : 2px solid $orange;
+	color       : $darkBlue;
+	display     : block;
+	font-size   : 20px;
+	font-weight : 700;
+	padding     : 6px;
+	width       : 100%;
+	@media screen and (min-width : 767px) and (max-width : 991px) {
+		font-size : 16px;
+	}
+	@media screen and (max-width : 991px) {
+		&:first-of-type {
+			margin-bottom : 10px;
+		}
+	}
+
+	svg {
+		fill           : $darkBlue;
+		vertical-align : middle;
+		width          : 20px;
+	}
+}
+
+%recent-chef {
+	background    : $white;
+	border-radius : $fourRoundness;
+	box-shadow    : 0 0 6px rgba($black, 0.16);
+	margin        : 15px 0;
+	padding       : 30px 15px;
+
+	.img-con {
+		margin    : auto;
+		max-width : 128px;
+
+		img {
+			border-radius : 50%;
+			display       : block;
+			margin        : 0 auto 25px auto;
+			height        : 90px;
+			width         : 90px;
+		}
+	}
+
+	.chef-actions {
+		margin-bottom : 15px;
+
+		.name {
+			float         : right;
+			font-size     : 18px;
+			margin-bottom : 0;
+
+			svg {
+				display        : inline-block;
+				fill           : $gold;
+				vertical-align : sub;
+			}
+		}
+
+		.btn {
+			border     : none;
+			box-shadow : none;
+			float      : left;
+			padding    : 0;
+
+			svg {
+				fill : $black;
+
+				&#unFollow {
+					display : none;
+					fill    : $orange;
+				}
+			}
+		}
+	}
+
+	.chef-statistics {
+		.row div[class*='col'] {
+			&:last-of-type p {
+				text-align : end;
+			}
+		}
+
+		p {
+			margin-bottom : 0;
+		}
+	}
+
+}
+
+%recipe {
+	background      : $darkWhite;
+	border-radius   : $fourRoundness;
+	box-shadow      : 0 0 6px rgba($black, 0.16);
+	display         : block;
+	margin-bottom   : 30px;
+	padding         : 20px;
+    text-decoration : none;
+    height          : 265px;
+
+	img {
+		border-radius : $fourRoundness;
+		margin-bottom : 10px;
+        width         : 100%;
+        height        : 150px;
+	}
+
+	.recipe-name {
+		color       : $orange;
+		display     : block;
+		font-size   : .9rem;
+		font-weight : bold;
+        text-align  : center;
+        height: 45px;
+        overflow: hidden;
+		@media screen and (max-width : 575px) {
+			font-size : 16px;
+		}
+	}
+
+	.chef-actions {
+		margin-top : 15px;
+
+		.name {
+			display       : block;
+			float         : right;
+			font-size     : 16px;
+			font-weight   : 500;
+			margin-bottom : 0;
+			@media screen and (min-width : 575px) {
+				font-size : .7rem;
+			}
+
+			svg {
+				display        : inline-block;
+				fill           : $gold;
+				vertical-align : sub;
+			}
+		}
+
+		.btn {
+			border     : none;
+			box-shadow : none;
+			float      : left;
+			padding    : 0;
+
+			svg {
+				fill : $black;
+
+				&#unFollow {
+					display : none;
+					fill    : $orange;
+				}
+			}
+		}
+	}
+}
+
+%owl-nav-center {
+	.owl-prev, .owl-next {
+		background : $orange;
+		outline    : none;
+		padding    : 0;
+		position   : absolute;
+		top        : 50%;
+		transform  : translateY(-50%);
+
+		svg {
+			fill   : $white;
+			height : 32px;
+			width  : 32px;
+		}
+	}
+
+	.owl-prev {
+		right : 0;
+	}
+
+	.owl-next {
+		left : 0;
+	}
+}
+
+%form-group-style {
+	.form-group, .input-group {
+		margin-bottom : 15px;
+
+		&.password {
+			height   : 38px;
+			position : relative;
+
+			.form-control {
+				bottom   : 0;
+				left     : 0;
+				position : absolute;
+				right    : 0;
+				top      : 0;
+			}
+
+			.input-group-append {
+				bottom      : 0;
+				left        : 0;
+				margin-left : 0;
+				position    : absolute;
+				right       : auto;
+				top         : 0;
+
+				span {
+					background : none;
+					border     : none;
+
+					i {
+						color     : rgba($orange, 0.75);
+						font-size : 24px;
+						opacity   : 0.75;
+					}
+				}
+			}
+		}
+
+		.form-control {
+			background    : rgba($black, 0.1);
+			border        : none;
+			border-radius : $fourRoundness;
+			color         : $black;
+			padding       : 8px 15px;
+
+			&:focus {
+				box-shadow : 0 0 8px rgba($black, 0.16);
+			}
+
+			&::placeholder {
+				color : rgba(34, 40, 49, 0.5);
+			}
+
+			&[title='gender'], &[title='country'], &[title='city'], &[title='district'] {
+				color   : $black;
+				padding : 0 15px;
+			}
+		}
+	}
+}
+
+/* Body Styling */
+body {
+	background  : $white;
+	color       : $black;
+	font-family : 'Tajawal', monospace;
+	font-size   : 16px;
+	font-weight : 400;
+	//min-height  : 100vh;
+}
+
+/* Styling Navbar */
+.navbar {
+	background : $darkWhite;
+	bottom     : auto;
+	box-shadow : 0 2px 6px rgba($black, 0.2);
+	//height     : 93px;
+	left       : 0;
+	padding    : 8px 0;
+	position   : fixed;
+	right      : 0;
+	top        : 0;
+	z-index    : 99999;
+	@media screen and (max-width : 575px) {
+		padding : 8px 15px;
+	}
+	@media screen and (max-width : 991px) {
+		height     : auto;
+		text-align : start;
+	}
+
+	.nav-con {
+		align-content   : space-between;
+		align-items     : center;
+		display         : flex;
+		flex-flow       : row nowrap;
+		justify-content : space-between;
+		width           : 100%;
+		@media screen and (max-width : 575px) {
+			flex-flow : row wrap;
+		}
+	}
+
+	.menu-open {
+		padding : 0;
+
+		svg {
+			fill   : $orange;
+			height : 36px;
+			width  : 36px;
+		}
+
+		@media screen and (max-width : 575px) {
+			order : 2;
+		}
+	}
+
+	.navbar-brand {
+		margin    : 0 30px;
+		padding   : 0;
+		transform : translateX(-90px);
+
+		@media screen and (max-width : 575px) {
+			margin     : 0 auto 10px auto;
+			order      : 1;
+			text-align : center;
+			transform  : translateX(0);
+			width      : 100%;
+		}
+
+		svg {
+			fill : $orange;
+		}
+	}
+
+	.navbar-nav {
+		padding-right : 0;
+		@media screen and (max-width : 575px) {
+			order : 3;
+		}
+
+		.nav-item {
+			border-radius : $fourRoundness;
+			font-size     : 18px;
+
+			&.login {
+				border            : 2px solid $orange;
+				color             : $orange;
+				margin-inline-end : 30px;
+			}
+
+			&.register {
+				background : $orange;
+				color      : $white;
+			}
+
+			.nav-link {
+				padding : 5px 15px;
+			}
+		}
+	}
+}
+
+.content-wrapper {
+	margin-top : 80px;
+	min-height : calc(100vh - 80px);
+	position   : relative;
+	@media screen and (max-width : 575px) {
+		margin-top : 131px;
+		min-height : calc(100vh - 131px);
+	}
+	/* Sections Styling */
+	main {
+		padding-bottom : 215px;
+		@media screen and (max-width : 767px) {
+			padding-bottom : 432px;
+        }
+
+        .banner {
+            background-blend-mode: normal;
+            height: calc(100vh - 80px);
+            position: relative;
+            z-index: 1;
+
+            .banner-slider {
+                .item {
+                    height: calc(100vh - 80px);
+                    position: relative;
+
+                    .text {
+                        background: linear-gradient(45deg, rgba(#F57E00, 0.6), rgba(#FF931F, 0.6), rgba(#FFA647, 0.6), rgba(#FFBA70, 0.6), rgba(#FFE1C2, 0.6));
+                        bottom: 0;
+                        left: 0;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        z-index: 1;
+
+                        h1 {
+                            color: $darkWhite;
+                            font-size: 48px;
+                            font-weight: 700;
+                            margin-bottom: 35px;
+                        }
+
+                        button {
+                            border: 2px solid $orange;
+                            border-radius: $fourRoundness;
+                            color: $darkWhite;
+                            font-size: 28px;
+                            font-weight: 700;
+                            margin-bottom: 150px;
+                            padding: 5px 15px;
+
+                            svg {
+                                display: inline;
+                                fill: $darkWhite;
+                                margin-inline-start: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .card-img-overlay {
+                background: url('/assets/images/tilt.svg') center bottom no-repeat;
+                background-blend-mode: screen;
+                border-radius: 0;
+                padding: 0;
+                z-index: 2;
+            }
+        }
+
+		&.homepage {
+
+			.benefits {
+				margin     : 80px 0;
+				text-align : center;
+
+				h2 {
+					color         : $darkBlue;
+					font-size     : 32px;
+					margin-bottom : 40px;
+				}
+
+				h3 {
+					color         : $orange;
+					font-size     : 28px;
+					margin-bottom : 25px;
+				}
+
+				h3 ~ p {
+					font-size     : 18px;
+					font-weight   : 500;
+					margin-bottom : 0;
+				}
+
+				h4 {
+					font-size     : 28px;
+					margin-bottom : 40px;
+				}
+
+				.benefits-con {
+					display         : flex;
+					flex-flow       : row wrap;
+					justify-content : space-between;
+				}
+			}
+
+			.register {
+				margin-bottom : 80px;
+				text-align    : center;
+
+				h2 {
+					color         : $orange;
+					font-size     : 32px;
+					margin-bottom : 25px;
+				}
+
+				.btn {
+					background  : $orange;
+					color       : $white;
+					font-size   : 22px;
+					font-weight : 700;
+					padding     : 8px 60px;
+				}
+			}
+		}
+
+		&.categories {
+
+			.container h2 {
+				color         : $orange;
+				font-size     : 24px;
+				margin-bottom : 25px;
+				text-align    : center;
+			}
+
+			.most-recent {
+				margin-bottom : 40px;
+
+				.owl-nav {
+					@extend %owl-nav-center;
+				}
+
+				.recent-chef {
+					display         : block;
+					text-decoration : none;
+					@extend %recent-chef;
+				}
+			}
+
+			.all-categories {
+				margin-bottom : 40px;
+
+				.category-link {
+					a {
+						background      : $darkWhite;
+						border-radius   : $fourRoundness;
+						color           : #FFFFFF;
+						font-size       : 18px;
+						padding         : 6px;
+                        text-decoration : none;
+                        font-weight     : bold;
+					}
+				}
+			}
+
+			.recipes {
+				.recipe {
+					@extend %recipe;
+				}
+			}
+		}
+
+		&.recipe-page {
+			padding-top : 80px;
+
+			h1 {
+				color         : $orange;
+				font-size     : 26px;
+				margin-bottom : 25px;
+				text-align    : center;
+			}
+
+			.recipe {
+				.video-con {
+					video {
+						border        : 3px solid rgba($gold, 0.75);
+						border-radius : $fourRoundness;
+						max-height    : 75vh;
+						outline       : none;
+						padding       : 1px;
+						width         : 100%;
+
+						&[poster] {
+							//object-fit : cover;
+						}
+					}
+				}
+
+				.chef-data {
+					background : rgba($darkWhite, 1);
+					padding    : 15px;
+
+					.chef-logo {
+						border-radius : $fourRoundness;
+						display       : block;
+						margin        : 0 auto 15px auto;
+						max-width     : 128px;
+					}
+
+					.cef-statistics {
+						.chef-actions {
+							color         : $orange;
+							font-size     : 18px;
+							margin-bottom : 10px;
+
+							.name {
+								float         : right;
+								font-size     : 1rem;
+								font-weight   : 500;
+								margin-bottom : 0;
+
+								svg {
+									display        : inline-block;
+									fill           : $gold;
+									vertical-align : sub;
+								}
+							}
+
+							.btn {
+								border     : none;
+								box-shadow : none;
+								float      : left;
+								padding    : 0;
+
+								svg {
+									fill : $black;
+
+									&#unFollow {
+										display : none;
+										fill    : $orange;
+									}
+								}
+							}
+						}
+
+						p {
+							display       : inline-block;
+							font-weight   : 500;
+							margin-bottom : 0;
+
+							&:first-of-type {
+								margin-inline-end : 30px;
+							}
+						}
+					}
+				}
+
+				.recipe-ingredients {
+					margin-top : 30px;
+
+					h3 {
+						color         : $orange;
+						font-size     : 24px;
+						margin-bottom : 15px;
+					}
+
+					ul {
+						list-style          : inside url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' version=\'1.1\' width=\'10\' height=\'10\' viewBox=\'0 0 438.536 438.536\'%3E%3Cpath d=\'M414.41,24.123C398.333,8.042,378.963,0,356.315,0H82.228C59.58,0,40.21,8.042,24.126,24.123C8.045,40.207,0.003,59.576,0.003,82.225v274.084c0,22.647,8.042,42.018,24.123,58.102c16.084,16.084,35.454,24.126,58.102,24.126h274.084c22.648,0,42.018-8.042,58.095-24.126c16.084-16.084,24.126-35.454,24.126-58.102V82.225C438.532,59.576,430.49,40.204,414.41,24.123z\' fill=\'%23f96e31\'/%3E%3C/svg%3E');
+						margin              : 0;
+						margin-inline-start : 10px;
+						padding             : 0;
+
+						li {
+							&:not(:last-of-type) {
+								margin-bottom : 5px;
+							}
+						}
+					}
+				}
+
+				.preparation {
+					margin-top : 40px;
+
+					h4 {
+						color         : $orange;
+						font-size     : 22px;
+						margin-bottom : 15px;
+					}
+
+					p {
+						font-size     : 18px;
+						line-height   : 2;
+						margin-bottom : 0;
+						text-align    : justify;
+
+					}
+				}
+			}
+
+			.similar-recipes {
+				margin : 40px 0 80px 0;
+
+				h3 {
+					color         : $orange;
+					font-size     : 24px;
+					margin-bottom : 25px;
+					text-align    : center;
+				}
+
+				.owl-nav {
+					@extend %owl-nav-center;
+				}
+
+				.recipe {
+					@extend %recipe;
+				}
+			}
+		}
+
+		&.register-page {
+			padding-top : 80px;
+
+			h1 {
+				color         : $orange;
+				font-size     : 32px;
+				margin-bottom : 40px;
+				text-align    : center;
+			}
+
+			.register-box {
+				background    : $white;
+				border-radius : $fourRoundness;
+				box-shadow    : -10px 10px 50px rgba($black, 0.16),
+				10px -10px 50px rgba($black, 0.16);
+				//margin-bottom : 40px;
+				padding       : 30px;
+				@media screen and (max-width : 767px) {
+					//background : none;
+					//box-shadow : none;
+				}
+				@media screen and (max-width : 575px) {
+					//padding : 0;
+				}
+
+				h2 {
+					color         : $orange;
+					font-size     : 18px;
+					margin-bottom : 25px;
+                    text-align    : center;
+                    width         : 300px;
+				}
+
+				.btns-con {
+					display       : flex;
+					flex-flow     : row wrap;
+					margin-bottom : 25px;
+
+					.btn {
+						background  : $darkBlue;
+						display     : block;
+						flex-basis  : calc((100% - 25px) / 2);
+						font-weight : 700;
+
+						&:first-of-type {
+							background        : $darkBlue;
+							color             : $white;
+							margin-inline-end : 25px;
+						}
+
+						&:last-of-type {
+							background : $gold;
+							color      : $black;
+							//margin-inline-end : 25px;
+						}
+					}
+				}
+
+				.register-types {
+					.partner, .basic {
+						background : $white;
+					}
+				}
+
+				#partner {
+					display : none;
+				}
+
+				.btn.google {
+					background    : $darkWhite $white;
+					border-radius : 4px;
+					box-shadow    : 0 0 6px rgba($black, 0.16);
+					color         : $black;
+					display       : block;
+					font-size     : 18px;
+					font-weight   : 700;
+					margin-bottom : 25px;
+					text-align    : center;
+					width         : 100%;
+
+					i, svg {
+						color               : inherit;
+						font-size           : 24px;
+						margin-inline-start : 20px;
+						vertical-align      : middle;
+
+						&.fa-facebook-square {
+							color : #3B5998;
+						}
+					}
+				}
+
+				form {
+					@extend %form-group-style;
+
+					.btn {
+						background  : $darkBlue;
+						box-shadow  : none;
+						color       : $white;
+						display     : block;
+						font-size   : 18px;
+						font-weight : 700;
+						padding     : 6px 0;
+						text-align  : center;
+						width       : 100%;
+					}
+				}
+
+				.login-now {
+					color      : $black;
+					margin-top : 25px;
+					text-align : center;
+
+					p {
+						max-width : fit-content;
+
+						a {
+							text-decoration : underline;
+						}
+					}
+
+					> a {
+						display : block;
+						margin  : auto;
+						width   : fit-content;
+
+						&:first-of-type {
+							margin-bottom : 25px
+						}
+					}
+				}
+			}
+
+			.modal#successRegister {
+				backdrop-filter : blur(5px);
+
+				z-index         : 99999999;
+
+				.modal-dialog {
+
+					.modal-content {
+						border     : none;
+						box-shadow : 0 0 10px rgba($black, 0.16);
+						position   : relative;
+
+						.btn#successRegisterClose {
+							left     : 15px;
+							padding  : 0;
+							position : absolute;
+							top      : 15px;
+							z-index  : 9;
+
+							svg {
+								fill   : $white;
+								height : 32px;
+								width  : 32px;
+							}
+						}
+
+						.modal-body {
+							padding : 40px 20px;
+
+							h6 {
+								color         : $orange;
+								font-size     : 20px;
+								margin-bottom : 25px;
+								text-align    : center;
+							}
+
+							p {
+								font-weight   : 500;
+								margin-bottom : 15px;
+								text-align    : justify;
+
+								&:last-of-type {
+									margin-bottom : 0;
+
+									a {
+										color           : $darkBlue;
+										text-decoration : underline;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.profiles {
+			padding-top : 80px;
+
+			h1 {
+				color         : $orange;
+				font-size     : 26px;
+				margin-bottom : 40px;
+				text-align    : center;
+			}
+
+			.user-data {
+				margin-bottom : 40px;
+
+				img[alt~='user'] {
+					border-radius : 50%;
+				}
+
+				h3 {
+					color         : $darkBlue;
+					font-size     : 22px;
+					margin-bottom : 15px;
+
+					sup {
+						color       : $black;
+						font-size   : 16px;
+						font-weight : 500;
+					}
+				}
+
+				.social-links {
+					background    : $white;
+					border-radius : $fourRoundness;
+					box-shadow    : inset 0 0 3px rgba($black, 0.2);
+					display       : inline-block;
+					margin-bottom : 15px;
+					padding       : 8px 15px;
+
+					a {
+						height         : 32px;
+						line-height    : 32px;
+						text-align     : center;
+						vertical-align : middle;
+						width          : 32px;
+
+						&:not(:last-of-type) {
+							margin-inline-end : 20px;
+						}
+					}
+				}
+
+				p {
+					font-weight   : 500;
+					line-height   : 2;
+					margin-bottom : 15px;
+				}
+
+				.sub-menu, .action-btns {
+					align-content : space-between;
+					display       : flex;
+					flex-flow     : row wrap;
+
+					.btn {
+						background        : rgba($black, 0.2);
+						box-shadow        : 0 3px 6px rgba($black, 0.1);
+						color             : $black;
+						flex-grow         : 1;
+						font-size         : 16px;
+						font-weight       : 700;
+						margin-bottom     : 15px;
+						margin-inline-end : 30px;
+						padding           : 8px 20px;
+
+						&.gold {
+							background        : $brightGold;
+							color             : $white;
+							margin-inline-end : 0;
+
+							svg {
+								fill           : $white;
+								vertical-align : top;
+							}
+						}
+					}
+				}
+			}
+
+			.divs {
+				h2 {
+					color         : $darkBlue;
+					font-size     : 26px;
+					margin-bottom : 25px;
+					text-align    : center;
+				}
+
+				#editProfile, #followers, #likes, #upgrade {
+					display : none;
+
+					&#editProfile {
+						//display : block;
+
+						form {
+							background    : $darkWhite;
+							border-radius : $fourRoundness;
+							padding       : 20px;
+							@extend %form-group-style;
+
+							.input-group {
+								border-radius : $fourRoundness;
+
+								.input-group-prepend {
+									.input-group-text {
+										background    : rgba($black, 0.1);
+										border        : none;
+										border-radius : 0 $fourRoundness $fourRoundness 0;
+										font-weight   : 500;
+									}
+								}
+
+								.custom-file {
+									.custom-file-label {
+										background    : $white;
+										border        : none;
+										border-radius : $fourRoundness 0 0 $fourRoundness;
+										font-weight   : 500;
+
+										&:after {
+											background    : rgba($black, 0.1);
+											border-radius : $fourRoundness 0 0 $fourRoundness;
+											bottom        : 0;
+											content       : 'الملفات';
+											font-weight   : 500;
+											height        : auto;
+											left          : -1px;
+											right         : auto;
+										}
+									}
+								}
+							}
+
+							.btn {
+								background          : $orange;
+								color               : $white;
+								display             : block;
+								font-size           : 18px;
+								font-weight         : 700;
+								margin-inline-start : auto;
+								margin-top          : 10px;
+								padding             : 5px 30px;
+								width               : auto;
+							}
+						}
+					}
+
+					&#followers {
+						.account {
+							align-items     : center;
+							background      : $darkWhite;
+							border-radius   : $fourRoundness;
+							display         : flex;
+							flex-flow       : row nowrap;
+							justify-content : space-between;
+							margin-bottom   : 30px;
+							padding         : 8px;
+
+							img {
+								border-radius : 50%;
+							}
+
+							a {
+								font-weight : 500;
+							}
+
+							.btn {
+								box-shadow : none;
+								padding    : 0;
+
+								svg {
+									fill : #DC3545;
+								}
+							}
+						}
+					}
+
+					&#likes {
+						display : block;
+
+						.recipe {
+							@extend %recipe;
+						}
+					}
+				}
+			}
+
+			.recipes {
+				h2 {
+					color         : $darkBlue;
+					font-size     : 24px;
+					margin-bottom : 25px;
+					text-align    : center;
+				}
+
+				.recipe {
+					@extend %recipe;
+					padding-top : 30px;
+					position    : relative;
+
+					.dropdown {
+						left     : 10px;
+						position : absolute;
+						top      : 0;
+
+						.btn {
+							//background : rgba($black, 0.7);
+							box-shadow : none;
+							padding    : 0;
+						}
+
+						.dropdown-menu {
+							border     : none;
+							box-shadow : 0 0 6px rgba($black, 0.16);
+							text-align : start;
+
+							a {
+								&:not(:last-of-type) {
+									margin-bottom : 5px;
+								}
+
+								svg {
+									fill              : $darkBlue;
+									margin-inline-end : 10px;
+								}
+							}
+						}
+					}
+
+					p {
+						font-weight   : 500;
+						margin-bottom : 10px;
+
+						&:last-of-type {
+							margin-bottom : 0;
+						}
+					}
+				}
+			}
+		}
+
+		&.new-recipe {
+			padding-top : 80px;
+
+			h1 {
+				color         : $orange;
+				font-size     : 32px;
+				margin-bottom : 40px;
+				text-align    : center;
+			}
+
+			.recipe-data {
+				form {
+					background    : $darkWhite;
+					border-radius : $fourRoundness;
+					padding       : 20px;
+					@extend %form-group-style;
+
+					.input-group {
+						border-radius : $fourRoundness;
+
+						.input-group-prepend {
+							.input-group-text {
+								background    : rgba($black, 0.1);
+								border        : none;
+								border-radius : 0 $fourRoundness $fourRoundness 0;
+								font-weight   : 500;
+							}
+						}
+
+						.custom-file {
+							.custom-file-label {
+								background    : $white;
+								border        : none;
+								border-radius : $fourRoundness 0 0 $fourRoundness;
+								font-weight   : 500;
+
+								&:after {
+									background    : rgba($black, 0.1);
+									border-radius : $fourRoundness 0 0 $fourRoundness;
+									bottom        : 0;
+									content       : 'الملفات';
+									font-weight   : 500;
+									height        : auto;
+									left          : -1px;
+									right         : auto;
+								}
+							}
+						}
+					}
+
+					.btn {
+						background          : $orange;
+						color               : $white;
+						display             : block;
+						font-size           : 18px;
+						font-weight         : 700;
+						margin-inline-start : auto;
+						margin-top          : 10px;
+						padding             : 5px 30px;
+						width               : auto;
+					}
+				}
+			}
+		}
+	}
+
+	/* Footer Styling */
+	footer {
+		background : $brightGold;
+		bottom     : 0;
+
+		left       : 0;
+		padding    : 10px 0;
+		position   : absolute;
+		right      : 0;
+		text-align : right;
+		top        : auto;
+
+
+		nav {
+			//align-content : center;
+			//display       : flex;
+			//flex-flow     : row nowrap;
+
+
+			.navbar-nav {
+				align-items    : center;
+				flex-direction : row;
+				flex-wrap      : wrap;
+				margin         : 0;
+				padding        : 0;
+
+				.nav-item {
+					&:not(:last-of-type) {
+						margin-inline-end : 30px;
+					}
+
+					&.logo {
+						svg {
+							fill  : $orange;
+							width : 128px;
+						}
+					}
+
+					.nav-link {
+						color     : $white;
+						display   : inline-block;
+						font-size : 18px;
+					}
+				}
+
+				.social-links {
+					background          : $darkWhite;
+					border-radius       : $fourRoundness;
+					margin-inline-start : auto;
+					padding             : 15px;
+
+					.nav-item {
+						&:not(:last-of-type) {
+							margin-inline-end : 15px;
+						}
+
+						.nav-link {
+							border-radius : $fourRoundness;
+							height        : 32px;
+							line-height   : 30px;
+							padding       : 0;
+							text-align    : center;
+							width         : 32px;
+
+							svg {
+								fill : $white;
+							}
+
+							&.linkedin {
+								background : #0077B5;
+							}
+
+							&.twitter {
+								background : #1DA1F2;
+							}
+
+							&.facebook {
+								background : #3B5998;
+							}
+
+							&.instagram {
+								background : #E1306C;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/*h5 {
+			font-size     : 20px;
+			font-weight   : 700;
+			margin-bottom : 10px;
+		}
+
+		nav {
+			&.social {
+				ul li {
+					text-align : center;
+
+					&:not(:last-of-type) {
+						margin-bottom : 8px;
+					}
+
+					a {
+						padding : 5px;
+
+						svg {
+							fill : $white;
+						}
+					}
+				}
+			}
+
+			ul {
+				list-style : none inside;
+				margin     : 0;
+				padding    : 0;
+
+				li {
+					&:not(:last-of-type) {
+						margin-bottom : 5px;
+					}
+
+					a {
+						color : $white;
+					}
+				}
+			}
+		}*/
+	}
+}
+
+aside.menu {
+	backdrop-filter : opacity(0.6);
+	background      : $darkWhite;
+	bottom          : 0;
+	box-shadow      : -6px 0 20px rgba($black, 0.2);
+	color           : $black;
+	height          : 100%;
+	left            : auto;
+	max-width       : 80%;
+	overflow-y      : auto;
+	padding         : 20px;
+	position        : fixed;
+	right           : -500px;
+	top             : 0;
+	transition      : 0.2s ease-in-out right,
+	0.2s ease-in-out visibility;
+	visibility      : hidden;
+	width           : 320px;
+	z-index         : 999999999;
+
+	&::-webkit-scrollbar {
+		display : none;
+	}
+
+	.btn#close {
+		box-shadow : none;
+		left       : 10px;
+		padding    : 0;
+		position   : absolute;
+		top        : 10px;
+
+		svg {
+			fill   : #DC3545;
+			height : 32px;
+			width  : 32px;
+		}
+	}
+
+	h5 {
+		color         : $orange;
+		font-size     : 24px;
+		margin-bottom : 25px;
+		margin-top    : 32px;
+		text-align    : start;
+	}
+
+	.accordion {
+		nav {
+			ul {
+				list-style : none inside;
+				margin     : 0;
+				padding    : 0;
+
+				li {
+					a {
+						//padding              : 0;
+						padding-inline-start : 0;
+					}
+				}
+			}
+		}
+
+		.card {
+			background : none;
+			border     : none;
+
+			&:not(:last-of-type) {
+				margin-bottom : 30px;
+			}
+
+			.card-header {
+				background    : none;
+				border-bottom : 1px solid rgba($black, 0.2);
+				padding       : 5px 0;
+
+				h6 {
+					button {
+						border          : none;
+						box-shadow      : none;
+						color           : $darkBlue;
+						display         : block;
+						font-size       : 18px;
+						font-weight     : 700;
+						padding         : 0;
+						text-align-last : justify;
+						text-decoration : none;
+						width           : 100%;
+
+						&:hover {
+							text-decoration : none;
+						}
+
+						span {
+							display : inline-block;
+							//text-align : start;
+						}
+
+						svg {
+							transition : 0.2s linear transform;
+						}
+
+						&[aria-expanded='true'] {
+							svg {
+								transform : rotateX(180deg);
+							}
+						}
+					}
+				}
+			}
+
+			.card-body {
+				padding : 0;
+
+				nav ul {
+					list-style : none inside;
+					margin     : 10px 0 0 0;
+					padding    : 0;
+
+					.nav-item {
+						.nav-link {
+							display : inline-block;
+							padding : 5px 10px;
+						}
+
+						&:last-of-type {
+							text-align : end;
+
+							.nav-link {
+								color       : $darkBlue;
+								font-size   : 16px;
+								font-weight : 700;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,93 @@
+.invalid-feedback {
+    text-align: left;
+}
+
+body[dir='rtl'] .invalid-feedback {
+    text-align: right;
+}
+
+
+.ck-editor__editable {
+    min-height: 200px !important;
+    background-color: #e2e1d7 !important;
+}
+
+.custom-file-container__custom-file__custom-file-control {
+    text-align: center !important;
+}
+
+.dropzone {
+    background-color: #edede8;
+}
+
+.video-preview {
+  border: 1px solid black;
+  display: block;
+}
+
+.video-btn, .video-btn:hover {
+    background-color: #f96e31;
+    color: #FFFFFF;
+}
+
+.swal2-styled.swal2-confirm {
+    background-color: #f96e31 !important;
+}
+
+.recipe-adv .chef-actions {
+    background-color: #ECB800;
+    color: #FFF;
+}
+
+.ad-link:hover {
+    text-decoration: none;
+}
+
+
+/* Framework */
+
+.gray-color {
+    color: #e2e1d7;
+}
+
+.open-gray-color {
+    color: #767676;
+}
+
+.btn-theme,
+.btn-theme:hover {
+    color: #fff;
+    background-color: #F96E31;
+    border-color: #F96E31;
+}
+
+.color-theme {
+    color: #F96E31;
+}
+
+.bg-theme {
+    background-color: #3d376a !important;
+}
+
+.bg-theme * {
+    color: #FFF;
+}
+
+.border-theme {
+    border-color: #3d376a !important;
+}
+
+.no-btn {
+    background-color: transparent;
+    border: 0;
+}
+
+.no-btn:focus {
+    outline: none;
+}
+
+.img-avatar {
+    border-radius: 50% !important;
+    width: 50px !important;
+    height: 50px !important;
+}

@@ -1,0 +1,41 @@
+*:not(i) {
+  font-family: "Tajawal", sans-serif;
+  overflow-wrap: break-word;
+  outline: none !important;
+}
+
+.dashboard-statistic a{
+    text-decoration: none;
+}
+
+header.navbar a.navbar-brand {
+	background-image: url('../img/logo.png') !important;
+	background-size: 45px auto;
+}
+
+.select2-container {
+    height: 45px;
+}
+
+.select2-container .select2-selection {
+    height: 45px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0;
+}
+
+.select2-container .select2-selection .select2-selection__rendered {
+    line-height: 30px;
+}
+
+.select2-container .select2-selection .select2-selection__arrow {
+    top: 3px;
+}
+
+.ck-content {
+    height: 400px;
+}
+
+
+.show-details-row img {
+    max-width: 100%;
+}
