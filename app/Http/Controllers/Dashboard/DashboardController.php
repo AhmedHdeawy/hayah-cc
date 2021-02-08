@@ -16,6 +16,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        dd(json_decode( file_get_contents(database_path('hayah-care-export.json')), true));
         $videosStatus = $this->getVideosStatus();
 
         $newVideos = $this->getVideosInLastTwoWeeks();
