@@ -31,38 +31,17 @@ Route::prefix(LaravelLocalization::setLocale() . '/admin')
             // Dashboard Routes
             Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
-            // Sliders Routes
-            Route::resource('sliders', 'SlidersController');
-
-            // Departments Routes
-            Route::resource('departments', 'DepartmentsController');
-
             // Categories Routes
             Route::resource('categories', 'CategoriesController');
 
             // Clients Routes
             Route::resource('clients', 'ClientsController');
 
-            // Advertisments Routes
-            Route::resource('advertisments', 'AdvertismentsController');
+            // Governorates Routes
+            Route::resource('governorates', 'GovernoratesController');
 
-            // Countries Routes
-            Route::resource('countries', 'CountriesController');
-
-            // States Routes
-            Route::resource('states', 'StatesController');
-
-            // Blogs Routes
-            Route::resource('blogs', 'BlogsController');
-
-            // Infos Routes
-            Route::resource('infos', 'InfosController')->except('create', 'store', 'destroy');
-
-            // Settings Routes
-            Route::resource('settings', 'SettingsController')->except('create', 'store', 'destroy');
-
-            // ContactUs Routes
-            Route::resource('contactus', 'ContactUsController');
+            // Cities Routes
+            Route::resource('cities', 'CitiesController');
 
             // Users Routes
             Route::resource('users', 'UsersController');

@@ -122,6 +122,18 @@ return [
     'category'    =>  'Category',
 
     /**
+     * governorates
+     */
+    'governorates'    =>  'Governorates',
+    'governorate'    =>  'Governorate',
+
+    /**
+     * cities
+     */
+    'cities'    =>  'Cities',
+    'city'    =>  'City',
+
+    /**
      * Departments
      */
     'departments'    =>  'Departments',

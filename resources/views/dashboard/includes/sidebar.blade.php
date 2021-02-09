@@ -15,6 +15,24 @@
             </li>
             @endif
 
+
+            @if(auth('admin')->user()->can('admin.governorates.view'))
+            <li class="nav-item">
+                <a class="nav-link {{ $segment == 'governorates' ? 'active' : '' }}" href="{{ route('admin.governorates.index') }}">
+                    <i class="icon-layers"></i> {{ __('dashboard.governorates') }}
+                </a>
+            </li>
+            @endif
+
+
+            @if(auth('admin')->user()->can('admin.cities.view'))
+            <li class="nav-item">
+                <a class="nav-link {{ $segment == 'cities' ? 'active' : '' }}" href="{{ route('admin.cities.index') }}">
+                    <i class="icon-layers"></i> {{ __('dashboard.cities') }}
+                </a>
+            </li>
+            @endif
+
             @if(auth('admin')->user()->can('admin.clients.view'))
             <li class="nav-item">
                 <a class="nav-link {{ $segment == 'clients' ? 'active' : '' }}" href="{{ route('admin.clients.index') }}">
@@ -27,32 +45,6 @@
             <li class="nav-item">
                 <a class="nav-link {{ $segment == 'users' ? 'active' : '' }}" href="{{ route('admin.users.index') }}">
                     <i class="icon-people"></i> {{ __('dashboard.users') }}
-                </a>
-            </li>
-            @endif
-
-            @if (auth('admin')->user()->can('admin.infos.view'))
-            <li class="nav-item">
-                <a class="nav-link {{ $segment == 'infos' ? 'active' : '' }}" href="{{ route('admin.infos.index') }}">
-                    <i class="icon-info"></i> {{ __('dashboard.infos') }}
-                </a>
-            </li>
-            @endif
-
-            @if (auth('admin')->user()->can('admin.settings.view'))
-            <li class="nav-item">
-                <a class="nav-link {{ $segment == 'settings' ? 'active' : '' }}"
-                    href="{{ route('admin.settings.index') }}">
-                    <i class="icon-settings"></i> {{ __('dashboard.settings') }}
-                </a>
-            </li>
-            @endif
-
-            @if(auth('admin')->user()->can('admin.contactus.view'))
-            <li class="nav-item">
-                <a class="nav-link {{ $segment == 'contactus' ? 'active' : '' }}"
-                    href="{{ route('admin.contactus.index') }}">
-                    <i class="icon-emotsmile"></i> {{ __('dashboard.contactus') }}
                 </a>
             </li>
             @endif

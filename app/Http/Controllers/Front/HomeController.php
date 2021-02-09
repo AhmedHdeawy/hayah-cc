@@ -36,7 +36,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        return view('front.home');
+        abort(404);
     }
 
     /**

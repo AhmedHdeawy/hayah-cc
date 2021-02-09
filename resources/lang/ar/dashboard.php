@@ -127,6 +127,18 @@ return [
     'category'    =>  'التصنيف',
 
     /**
+     * governorates
+     */
+    'governorates'    =>  'المحافظات',
+    'governorate'    =>  'المحافظة',
+
+    /**
+     * cities
+     */
+    'cities'    =>  'المدن',
+    'city'    =>  'المدينة',
+
+    /**
      * Departments
      */
     'departments'    =>  'الاقسام',

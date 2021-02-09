@@ -59,10 +59,17 @@ class Category extends Model implements TranslatableContract
      */
     public function getImageUrlAttribute()
     {
-        if (!$this->image)
-            return null;
+        if (!$this->image) {
 
-        return Storage::disk('public')->url($this->image);
+            return null;
+        } else {
+            $http = substr($this->image, 0, 4);
+            if ($http == 'http') {
+                return $this->image;
+            }
+            return Storage::disk('public')->url($this->image);
+        }
+
     }
 
     /**
