@@ -134,6 +134,12 @@ return [
     'city'    =>  'City',
 
     /**
+     * Centers
+     */
+    'centers'    =>  'Centers',
+    'center'    =>  'Center',
+
+    /**
      * Departments
      */
     'departments'    =>  'Departments',

@@ -43,6 +43,10 @@ Route::prefix(LaravelLocalization::setLocale() . '/admin')
             // Cities Routes
             Route::resource('cities', 'CitiesController');
 
+
+            // Cities Routes
+            Route::resource('centers', 'CentersController');
+
             // Users Routes
             Route::resource('users', 'UsersController');
 

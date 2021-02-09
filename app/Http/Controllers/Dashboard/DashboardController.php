@@ -20,59 +20,13 @@ class DashboardController extends Controller
     public function index()
     {
         $db = json_decode(file_get_contents(database_path('hayah-care-export.json')), true);
-dd("$db");
-        foreach ($db['centers'] as $item) {
-            if ($item['id'] != -1) {
-                $data = [
-                    'category_id' => $item['category_id'],
-                    'city_id' => $item['city_id'],
-                    'governorate_id' => $item['governorate_id'] + 1,
-                    'discount_value' => $item['discount_value'],
-                    'distance' => $item['distance'],
-                    'hours' => $item['hours_en'],
-                    'latitude' => $item['latitude'],
-                    'longitude' => $item['longitude'],
-                    'logo' => $item['logo'],
-                    'notes' => $item['notes'],
-                    'phone' => $item['phone'],
-                    'ar' => [
-                        'name' => $item['name_ar'],
-                        'coupon' => $item['coupon_ar'],
-                        'address' => $item['address']
-                    ],
-                    'en' => [
-                        'name' => $item['name_en'],
-                        'coupon' => $item['coupon_en'],
-                        'address' => $item['address_en'],
-                    ],
-                ];
-                $center = Center::create($data);
-                foreach ($$item['branches'] as $branche) {
-                    $branche = [
-                        'category_id' => $item['category_id'],
-                        'city_id' => $item['city_id'],
-                        'governorate_id' => $item['governorate_id'] + 1,
-                        'discount_value' => $item['discount_value'],
-                        'hours' => $item['hours_en'],
-                        'latitude' => $item['latitude'],
-                        'longitude' => $item['longitude'],
-                        'logo' => $item['logo'],
-                        'notes' => $item['notes'],
-                        'phone' => $item['phone'],
-                        'ar' => [
-                            'name' => $item['name_ar'],
-                            'coupon' => $item['coupon_ar'],
-                            'address' => $item['address']
-                        ],
-                        'en' => [
-                            'name' => $item['name_en'],
-                            'coupon' => $item['coupon_en'],
-                            'address' => $item['address_en'],
-                        ],
-                    ];
-                }
-            }
-        }
+
+        // $this->Cities($db);
+
+        // dd($db['centers'][0]['branches']);
+
+
+        dd("None");
 
         return view('dashboard.dashboard.home');
     }
@@ -134,57 +88,66 @@ dd("$db");
     public function Centers($db)
     {
         foreach ($db['centers'] as $item) {
-            if ($item['id'] != -1) {
+
+            if (isset($item)) {
+
                 $data = [
-                    'category_id' => $item['category_id'],
-                    'city_id' => $item['city_id'],
-                    'governorate_id' => $item['governorate_id'] + 1,
+                    'category_id' => $item['category_id'] + 1,
+                    'city_id' => $item['city_id'] < 0 ? abs($item['city_id']) : $item['city_id'] + 1,
+                    'governorate_id' => $item['governorate_id'] < 0 ? abs($item['governorate_id']) : $item['governorate_id'] + 1,
                     'discount_value' => $item['discount_value'],
-                    'distance' => $item['distance'],
-                    'hours' => $item['hours_en'],
-                    'latitude' => $item['latitude'],
-                    'longitude' => $item['longitude'],
+                    'hours' => isset($item['hours_en']) ? $item['hours_en'] : $item['hours'],
+                    'latitude' => $item['latitude'] ?? null,
+                    'longitude' => $item['longitude'] ?? null,
                     'logo' => $item['logo'],
-                    'notes' => $item['notes'],
+                    'notes' => $item['notes'] ?? null,
                     'phone' => $item['phone'],
                     'ar' => [
-                        'name' => $item['name_ar'],
-                        'coupon' => $item['coupon_ar'],
-                        'address' => $item['address']
+                        'name' => isset($item['name_ar']) ? $item['name_ar'] : $item['name_en'],
+                        'address' => $item['address'],
+                        'coupon' => isset($item['coupon_ar']) ? $item['coupon_ar'] : null,
                     ],
                     'en' => [
-                        'name' => $item['name_en'],
-                        'coupon' => $item['coupon_en'],
-                        'address' => $item['address_en'],
+                        'name' => isset($item['name_en']) ? $item['name_en'] : $item['name_en'],
+                        'address' => isset($item['address_en']) ? $item['address_en'] : $item['address'],
+                        'coupon' => isset($item['coupon_en']) ? $item['coupon_en'] : null,
                     ],
                 ];
+
                 $center = Center::create($data);
-                foreach ($$item['branches'] as $branche) {
-                    $branche = [
-                        'category_id' => $item['category_id'],
-                        'city_id' => $item['city_id'],
-                        'governorate_id' => $item['governorate_id'] + 1,
-                        'discount_value' => $item['discount_value'],
-                        'hours' => $item['hours_en'],
-                        'latitude' => $item['latitude'],
-                        'longitude' => $item['longitude'],
-                        'logo' => $item['logo'],
-                        'notes' => $item['notes'],
-                        'phone' => $item['phone'],
-                        'ar' => [
-                            'name' => $item['name_ar'],
-                            'coupon' => $item['coupon_ar'],
-                            'address' => $item['address']
-                        ],
-                        'en' => [
-                            'name' => $item['name_en'],
-                            'coupon' => $item['coupon_en'],
-                            'address' => $item['address_en'],
-                        ],
-                    ];
+
+                if (isset($item['branches'])) {
+
+                    $branches = array_unique($item['branches'], SORT_REGULAR);
+
+                    foreach ($branches as $branch) {
+                        $branchData = [
+                            'category_id' => $branch['category_id'] + 1,
+                            'city_id' => $branch['city_id'] < 0 ? abs($branch['city_id']) : $branch['city_id'] + 1,
+                            'governorate_id' => $branch['governorate_id'] < 0 ? abs($branch['governorate_id']) : $branch['governorate_id'] + 1,
+                            'discount_value' => $branch['discount_value'],
+                            'hours' => $branch['hours_en'],
+                            'latitude' => $branch['latitude'] ?? null,
+                            'longitude' => $branch['longitude'] ?? null,
+                            'logo' => $branch['logo'],
+                            'notes' => isset($branch['notes']) ? $branch['notes'] : null,
+                            'phone' => $branch['phone'],
+                            'ar' => [
+                                'name' => $branch['name_ar'],
+                                'coupon' => isset($item['coupon_ar']) ? $item['coupon_ar'] : null,
+                                'address' => $branch['address']
+                            ],
+                            'en' => [
+                                'name' => $branch['name_en'],
+                                'coupon' => isset($item['coupon_en']) ? $item['coupon_en'] : null,
+                                'address' => isset($item['address_en']) ? $item['address_en'] : $item['address'],
+                            ],
+                        ];
+
+                        $center->branches()->create($branchData);
+                    }
                 }
             }
         }
     }
-
 }

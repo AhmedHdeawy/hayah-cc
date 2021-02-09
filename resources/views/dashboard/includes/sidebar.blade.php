@@ -33,6 +33,14 @@
             </li>
             @endif
 
+            @if(auth('admin')->user()->can('admin.centers.view'))
+            <li class="nav-item">
+                <a class="nav-link {{ $segment == 'centers' ? 'active' : '' }}" href="{{ route('admin.centers.index') }}">
+                    <i class="icon-location-pin"></i> {{ __('dashboard.centers') }}
+                </a>
+            </li>
+            @endif
+
             @if(auth('admin')->user()->can('admin.clients.view'))
             <li class="nav-item">
                 <a class="nav-link {{ $segment == 'clients' ? 'active' : '' }}" href="{{ route('admin.clients.index') }}">

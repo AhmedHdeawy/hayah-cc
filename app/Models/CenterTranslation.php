@@ -29,7 +29,7 @@ class CenterTranslation extends Model
     /**
      * fillable attributes
      */
-    protected $fillable = ['center_id', 'locale', 'name', 'address'];
+    protected $fillable = ['center_id', 'locale', 'name', 'address', 'coupon'];
 
 
     /**

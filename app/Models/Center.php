@@ -20,7 +20,7 @@ class Center extends Model implements TranslatableContract
     /**
      * translated attributes
      */
-    public $translatedAttributes = ['name', 'address'];
+    public $translatedAttributes = ['name', 'address', 'coupon'];
 
     /**
      * fillable attributes
@@ -58,7 +58,7 @@ class Center extends Model implements TranslatableContract
      */
     public function branches()
     {
-        return $this->belongsTo('App\Models\CenterBranch', 'center_id', 'id');
+        return $this->hasMany('App\Models\CenterBranch', 'center_id', 'id');
     }
 
     /**

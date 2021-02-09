@@ -139,6 +139,12 @@ return [
     'city'    =>  'المدينة',
 
     /**
+     * Centers
+     */
+    'centers'    =>  'الاماكن',
+    'center'    =>  'المكان',
+
+    /**
      * Departments
      */
     'departments'    =>  'الاقسام',

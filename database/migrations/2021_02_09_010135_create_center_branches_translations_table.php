@@ -20,8 +20,8 @@ class CreateCenterBranchesTranslationsTable extends Migration
             $table->text('address')->nullable();
             $table->text('coupon')->nullable();
 
-            $table->unsignedInteger('center_branches_id');
-            $table->foreign('center_branches_id')->references('id')->on('center_branches')->onDelete('cascade');
+            $table->unsignedInteger('center_branch_id');
+            $table->foreign('center_branch_id')->references('id')->on('center_branches')->onDelete('cascade');
         });
     }
 

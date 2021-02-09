@@ -18,6 +18,7 @@ class CreateCenterTranslationsTable extends Migration
             $table->string('locale', 191)->index();
             $table->text('name');
             $table->text('address')->nullable();
+            $table->text('coupon')->nullable();
 
             $table->unsignedInteger('center_id');
             $table->foreign('center_id')->references('id')->on('centers')->onDelete('cascade');

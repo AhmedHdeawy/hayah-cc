@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class CenterBranchTranslation extends Model
 {
-
     /**
      * The primary key for the model.
      *
@@ -29,7 +28,7 @@ class CenterBranchTranslation extends Model
     /**
      * fillable attributes
      */
-    protected $fillable = ['center_branches_id', 'locale', 'name', 'address', 'coupon'];
+    protected $fillable = ['center_branch_id', 'locale', 'name', 'address', 'coupon'];
 
 
     /**
@@ -37,6 +36,6 @@ class CenterBranchTranslation extends Model
      */
     public function centerBranch()
     {
-        return $this->belongsTo('App\Models\CenterBranch', 'center_branches_id', 'id');
+        return $this->belongsTo('App\Models\CenterBranch', 'center_branch_id', 'id');
     }
 }

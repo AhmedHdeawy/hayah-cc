@@ -75749,7 +75749,7 @@
         "copon_ar": "٣٠١٠٠١٦٨٤ كود التعاقد",
         "copon_en": "code 301001684",
         "discount_value": 0.075,
-        "governorate_id": -20,
+        "governorate_id": 1,
         "hours": "24/7",
         "hours_en": "24/7",
         "id": 100,
