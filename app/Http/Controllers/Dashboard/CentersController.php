@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Models\City;
 use App\Models\Center;
+use App\Models\Category;
+
+use App\Models\Governorate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Support\Facades\Cache;
 use App\Http\Requests\CenterRequest;
+use Illuminate\Support\Facades\Cache;
 
 class CentersController extends Controller
 {
@@ -43,7 +46,11 @@ class CentersController extends Controller
      */
     public function create()
     {
-      return view('dashboard.centers.create');
+        $governorates = Governorate::all();
+        $cities = City::all();
+        $categories = Category::all();
+
+      return view('dashboard.centers.create', compact('governorates', 'cities', 'categories'));
     }
 
 
@@ -84,7 +91,11 @@ class CentersController extends Controller
      */
     public function edit(Center $center)
     {
-        return view('dashboard.centers.edit', compact('center'));
+        $governorates = Governorate::all();
+        $cities = City::all();
+        $categories = Category::all();
+
+        return view('dashboard.centers.edit', compact('center','governorates', 'cities', 'categories'));
     }
 
     /**

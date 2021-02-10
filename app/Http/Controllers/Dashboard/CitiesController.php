@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Cache;
 use App\Http\Requests\CityRequest;
+use App\Models\Governorate;
 
 class CitiesController extends Controller
 {
@@ -44,7 +45,9 @@ class CitiesController extends Controller
      */
     public function create()
     {
-      return view('dashboard.cities.create');
+        $governorates = Governorate::all();
+
+        return view('dashboard.cities.create', compact('governorates'));
     }
 
 
@@ -85,7 +88,9 @@ class CitiesController extends Controller
      */
     public function edit(City $city)
     {
-        return view('dashboard.cities.edit', compact('city'));
+        $governorates = Governorate::all();
+
+        return view('dashboard.cities.edit', compact('city', 'governorates'));
     }
 
     /**

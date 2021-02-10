@@ -28,6 +28,26 @@
     </div>
 </div>
 
+<div class="form-group row">
+      <label class="col-md-3 form-control-label" for="governorates"> {{ __('dashboard.governorates') }} </label>
+      <div class="col-md-9">
+        <select class="form-control select2 {{ $errors->first('governorate_id') ? 'is-invalid' : '' }}" id="governorates" name="governorate_id"
+           placeholder="{{ __('dashboard.governorates') }}">
+            <option value=""></option>
+            @foreach ($governorates as $governorate)
+                <option value="{{ $governorate->id }}"
+                    {{ isset($city) && $city->governorate_id == $governorate->id ? 'selected' : '' }}>{{ $governorate->name }}
+                </option>
+            @endforeach
+        </select>
+
+          @if ($errors->first('governorate_id'))
+            <div class="invalid-feedback text-danger">{{ $errors->first('governorate_id') }}</div>
+          @endif
+
+      </div>
+</div>
+
 
 @foreach($languages as $languag)
 

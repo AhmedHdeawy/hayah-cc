@@ -16,6 +16,10 @@
         <div class="card">
             <div class="card-header">
                 <i class="fa fa-align-justify"></i> {{ __('dashboard.centers') }}
+
+                <a href="{{ route('admin.centers.create') }}" class="btn btn-success btn-create {{ LaravelLocalization::getCurrentLocaleDirection() == 'rtl' ? 'pull-left' : 'pull-right' }}">
+                    <i class="icon-plus"></i> {{ __('dashboard.create') }}
+                </a>
             </div>
 
             <div class="card-block">

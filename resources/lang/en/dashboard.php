@@ -138,6 +138,9 @@ return [
      */
     'centers'    =>  'Centers',
     'center'    =>  'Center',
+    'coupon'    =>  'Coupon',
+    'discount_value'    =>  'Discount Value',
+    'hours'    =>  'Hours',
 
     /**
      * Departments
@@ -194,8 +197,11 @@ return [
     'twitter'  =>  'Twitter',
     'google'  =>  'Google',
     'address'  =>  'Address',
+    'addresses'  =>  'Addresses',
     'about'  =>  'About Us',
     'hour_price'    =>  'Hour Price',
+    'latitude'  =>  'Latitude',
+    'longitude'  =>  'Longitude',
 
     /**
      * Infos

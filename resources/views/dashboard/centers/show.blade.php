@@ -26,10 +26,73 @@
 
                 <div class="row show-details-row">
                     <div class="col-sm-2">
+                        {{ __('dashboard.address') }} :
+                    </div>
+                    <div class="col-sm-10">
+                        {{ $center->translate($showLang)->address }}
+                    </div>
+                </div>
+
+                <div class="row show-details-row">
+                    <div class="col-sm-2">
+                        {{ __('dashboard.coupon') }} :
+                    </div>
+                    <div class="col-sm-10">
+                        {{ $center->translate($showLang)->coupon }}
+                    </div>
+                </div>
+
+                <div class="row show-details-row">
+                    <div class="col-sm-2">
+                        {{ __('dashboard.discount_value') }} :
+                    </div>
+                    <div class="col-sm-10">
+                        {{ $center->discount_value }}
+                    </div>
+                </div>
+
+                <div class="row show-details-row">
+                    <div class="col-sm-2">
+                        {{ __('dashboard.hours') }} :
+                    </div>
+                    <div class="col-sm-10">
+                        {{ $center->hours }}
+                    </div>
+                </div>
+
+                <div class="row show-details-row">
+                    <div class="col-sm-2">
+                        {{ __('dashboard.phone') }} :
+                    </div>
+                    <div class="col-sm-10">
+                        {{ $center->phone }}
+                    </div>
+                </div>
+
+                <div class="row show-details-row">
+                    <div class="col-sm-2">
+                        {{ __('dashboard.category') }} :
+                    </div>
+                    <div class="col-sm-10">
+                        {{ $center->category->name }}
+                    </div>
+                </div>
+
+                <div class="row show-details-row">
+                    <div class="col-sm-2">
                         {{ __('dashboard.governorate') }} :
                     </div>
                     <div class="col-sm-10">
                         {{ $center->governorate->name }}
+                    </div>
+                </div>
+
+                <div class="row show-details-row">
+                    <div class="col-sm-2">
+                        {{ __('dashboard.city') }} :
+                    </div>
+                    <div class="col-sm-10">
+                        {{ $center->city->name }}
                     </div>
                 </div>
 
@@ -43,6 +106,21 @@
                         @else
                             <strong class="text-danger">{{ __('dashboard.'.$showLang.'.stopped') }}</strong>
                         @endif
+                    </div>
+                </div>
+
+                <div class="row show-details-row">
+                    <div class="col-sm-2">
+                        {{ __('dashboard.addresses') }} :
+                    </div>
+                    <div class="col-sm-10">
+                        @foreach ($center->branches as $branch)
+                            @if ($loop->last)
+                                {{ $branch->name }}
+                            @else
+                                {{ $branch->name }} -
+                            @endif
+                        @endforeach
                     </div>
                 </div>
 

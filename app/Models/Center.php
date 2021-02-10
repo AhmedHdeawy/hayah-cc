@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Astrotomic\Translatable\Translatable;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 
@@ -27,6 +28,29 @@ class Center extends Model implements TranslatableContract
      */
     protected $fillable = ['discount_value', 'hours', 'latitude', 'longitude', 'notes', 'phone', 'logo',
             'category_id', 'governorate_id', 'city_id', 'status', 'governorate_id'];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['logo_url'];
+
+    /**
+     * Get logo url for the category logo.
+     */
+    public function getImageUrlAttribute()
+    {
+        if (!$this->logo) {
+            return null;
+        } else {
+            $http = substr($this->logo, 0, 4);
+            if ($http == 'http') {
+                return $this->logo;
+            }
+            return Storage::disk('public')->url($this->logo);
+        }
+    }
 
     /**
      * Info that belongs To

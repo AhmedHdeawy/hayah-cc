@@ -28,6 +28,163 @@
     </div>
 </div>
 
+<div class="form-group row">
+      <label class="col-md-3 form-control-label" for="categories"> {{ __('dashboard.categories') }} </label>
+      <div class="col-md-9">
+        <select class="form-control select2 {{ $errors->first('category_id') ? 'is-invalid' : '' }}" id="categories" name="category_id"
+           placeholder="{{ __('dashboard.categories') }}">
+            <option value=""></option>
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}"
+                    {{ isset($city) && $city->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}
+                </option>
+            @endforeach
+        </select>
+
+          @if ($errors->first('category_id'))
+            <div class="invalid-feedback text-danger">{{ $errors->first('category_id') }}</div>
+          @endif
+
+      </div>
+</div>
+
+
+<div class="form-group row">
+      <label class="col-md-3 form-control-label" for="governorates"> {{ __('dashboard.governorates') }} </label>
+      <div class="col-md-9">
+        <select class="form-control select2 {{ $errors->first('governorate_id') ? 'is-invalid' : '' }}" id="governorates" name="governorate_id"
+           placeholder="{{ __('dashboard.governorates') }}">
+            <option value=""></option>
+            @foreach ($governorates as $governorate)
+                <option value="{{ $governorate->id }}"
+                    {{ isset($city) && $city->governorate_id == $governorate->id ? 'selected' : '' }}>{{ $governorate->name }}
+                </option>
+            @endforeach
+        </select>
+
+          @if ($errors->first('governorate_id'))
+            <div class="invalid-feedback text-danger">{{ $errors->first('governorate_id') }}</div>
+          @endif
+
+      </div>
+</div>
+
+
+<div class="form-group row">
+      <label class="col-md-3 form-control-label" for="cities"> {{ __('dashboard.cities') }} </label>
+      <div class="col-md-9">
+        <select class="form-control select2 {{ $errors->first('city_id') ? 'is-invalid' : '' }}" id="cities" name="city_id"
+           placeholder="{{ __('dashboard.cities') }}">
+            <option value=""></option>
+            @foreach ($cities as $city)
+                <option value="{{ $city->id }}"
+                    {{ isset($city) && $city->city_id == $city->id ? 'selected' : '' }}>{{ $city->name }}
+                </option>
+            @endforeach
+        </select>
+
+          @if ($errors->first('city_id'))
+            <div class="invalid-feedback text-danger">{{ $errors->first('city_id') }}</div>
+          @endif
+
+      </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-md-3 form-control-label" for="hours"> {{ __('dashboard.hours') }} </label>
+    <div class="col-md-9">
+
+        <input type="text" id="hours" name="hours"
+            class="form-control {{ $errors->first('hours') ? 'is-invalid' : '' }}"
+            value="{{ old('hours', isset($center) ? $center->hours : '') }}"
+            placeholder="{{ __('dashboard.hours') }}">
+
+        @if ($errors->first('hours'))
+        <div class="invalid-feedback text-danger">{{ $errors->first('hours') }}</div>
+        @endif
+
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-md-3 form-control-label" for="phone"> {{ __('dashboard.phone') }} </label>
+    <div class="col-md-9">
+
+        <input type="text" id="phone" name="phone"
+            class="form-control {{ $errors->first('phone') ? 'is-invalid' : '' }}"
+            value="{{ old('phone', isset($center) ? $center->phone : '') }}"
+            placeholder="{{ __('dashboard.phone') }}">
+
+        @if ($errors->first('phone'))
+        <div class="invalid-feedback text-danger">{{ $errors->first('phone') }}</div>
+        @endif
+
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-md-3 form-control-label" for="latitude"> {{ __('dashboard.latitude') }} </label>
+    <div class="col-md-9">
+
+        <input type="text" id="latitude" name="latitude"
+            class="form-control {{ $errors->first('latitude') ? 'is-invalid' : '' }}"
+            value="{{ old('latitude', isset($center) ? $center->latitude : '') }}"
+            placeholder="{{ __('dashboard.latitude') }}">
+
+        @if ($errors->first('latitude'))
+        <div class="invalid-feedback text-danger">{{ $errors->first('latitude') }}</div>
+        @endif
+
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-md-3 form-control-label" for="longitude"> {{ __('dashboard.longitude') }} </label>
+    <div class="col-md-9">
+
+        <input type="text" id="longitude" name="longitude"
+            class="form-control {{ $errors->first('longitude') ? 'is-invalid' : '' }}"
+            value="{{ old('longitude', isset($center) ? $center->longitude : '') }}"
+            placeholder="{{ __('dashboard.longitude') }}">
+
+        @if ($errors->first('longitude'))
+        <div class="invalid-feedback text-danger">{{ $errors->first('longitude') }}</div>
+        @endif
+
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-md-3 form-control-label" for="notes"> {{ __('dashboard.notes') }} </label>
+    <div class="col-md-9">
+
+        <textarea type="text" id="notes" name="notes"
+            class="form-control {{ $errors->first('notes') ? 'is-invalid' : '' }}"
+            placeholder="{{ __('dashboard.notes') }}">{{ old('notes', isset($center) ? $center->notes : '') }}</textarea>
+
+        @if ($errors->first('notes'))
+        <div class="invalid-feedback text-danger">{{ $errors->first('notes') }}</div>
+        @endif
+
+    </div>
+</div>
+
+
+<div class="form-group row">
+    <label class="col-md-3 form-control-label" for="logo"> {{ __('dashboard.image') }} </label>
+    <div class="col-md-9">
+
+        @include('dashboard.includes.uploadImage',
+        ['name' => 'logo', 'value' => isset($user) ? $user->logo : null, 'path' => 'uploads/users/']
+        )
+
+        @if ($errors->first('logo'))
+        <div class="invalid-feedback text-danger">{{ $errors->first('logo') }}</div>
+        @endif
+
+    </div>
+</div>
+
 
 @foreach($languages as $languag)
 
@@ -46,6 +203,36 @@
 
         @if ($errors->first($languag->locale .'.name'))
         <div class="invalid-feedback text-danger">{{ $errors->first($languag->locale .'.name') }}</div>
+        @endif
+
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-md-3 form-control-label" for="{{ $languag->locale }}[address]"> {{ __('dashboard.address') }} </label>
+    <div class="col-md-9">
+
+        <textarea type="text" id="{{ $languag->locale }}[address]" name="{{ $languag->locale }}[address]"
+            class="form-control {{ $errors->first($languag->locale .'.address') ? 'is-invalid' : '' }}"
+            placeholder="{{ __('dashboard.address') }}">{{ old($languag->locale .'address', isset($center) ? $center->translate($languag->locale)->address : '') }}</textarea>
+
+        @if ($errors->first($languag->locale .'.address'))
+        <div class="invalid-feedback text-danger">{{ $errors->first($languag->locale .'.address') }}</div>
+        @endif
+
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-md-3 form-control-label" for="{{ $languag->locale }}[coupon]"> {{ __('dashboard.coupon') }} </label>
+    <div class="col-md-9">
+
+        <textarea type="text" id="{{ $languag->locale }}[coupon]" name="{{ $languag->locale }}[coupon]"
+            class="form-control {{ $errors->first($languag->locale .'.coupon') ? 'is-invalid' : '' }}"
+            placeholder="{{ __('dashboard.coupon') }}">{{ old($languag->locale .'coupon', isset($center) ? $center->translate($languag->locale)->coupon : '') }}</textarea>
+
+        @if ($errors->first($languag->locale .'.coupon'))
+        <div class="invalid-feedback text-danger">{{ $errors->first($languag->locale .'.coupon') }}</div>
         @endif
 
     </div>

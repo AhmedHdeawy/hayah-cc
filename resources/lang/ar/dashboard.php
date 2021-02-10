@@ -143,6 +143,11 @@ return [
      */
     'centers'    =>  'الاماكن',
     'center'    =>  'المكان',
+    'coupon'    =>  'الكوبون',
+    'discount_value'    =>  'قيمة الخصم',
+    'hours'    =>  'الساعات',
+    'latitude'  =>  'خط العرض',
+    'longitude'  =>  'خط الطول',
 
     /**
      * Departments
@@ -201,6 +206,7 @@ return [
     'twitter'  =>  'رابط تويتر',
     'google'  =>  'رابط جوجل',
     'address'  =>  'العنوان',
+    'addresses'  =>  'العناوين',
     'about'  =>  'نبذه عنا',
     'hour_price'    =>  'سعر الساعة',
 
