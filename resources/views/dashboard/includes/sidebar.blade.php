@@ -41,22 +41,14 @@
             </li>
             @endif
 
-            @if(auth('admin')->user()->can('admin.clients.view'))
+
+            @if(auth('admin')->user()->can('admin.center-branches.view'))
             <li class="nav-item">
-                <a class="nav-link {{ $segment == 'clients' ? 'active' : '' }}" href="{{ route('admin.clients.index') }}">
-                    <i class="icon-people"></i> {{ __('dashboard.clients') }}
+                <a class="nav-link {{ $segment == 'center-branches' ? 'active' : '' }}" href="{{ route('admin.center-branches.index') }}">
+                    <i class="icon-location-pin"></i> {{ __('dashboard.center-branches') }}
                 </a>
             </li>
             @endif
-
-            @if(auth('admin')->user()->can('admin.users.view'))
-            <li class="nav-item">
-                <a class="nav-link {{ $segment == 'users' ? 'active' : '' }}" href="{{ route('admin.users.index') }}">
-                    <i class="icon-people"></i> {{ __('dashboard.users') }}
-                </a>
-            </li>
-            @endif
-
 
             @if(auth('admin')->user()->can('admin.admins.view'))
             <li class="nav-item">

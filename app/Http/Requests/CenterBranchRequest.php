@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Language;
 
-class CenterRequest extends FormRequest
+class CenterBranchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,6 +29,7 @@ class CenterRequest extends FormRequest
             'latitude'  =>  'required',
             'longitude'  =>  'required',
             'logo'  =>  'required',
+            'center_id'  =>  'required|numeric',
             'governorate_id'  =>  'required|numeric',
             'category_id'  =>  'required|numeric',
             'city_id'  =>  'required|numeric',

@@ -64,6 +64,10 @@ class CentersController extends Controller
     {
         $center = Center::create($request->all());
 
+        if ($request->has('logo') && !empty($request->logo)) {
+            $this->saveImage($center, $request->logo, 'logo');
+        }
+
         Cache::forget('centers');
 
         return redirect()->route('admin.centers.index')->with('msg_success', __('dashboard.createdSuccessfully'));
@@ -107,11 +111,13 @@ class CentersController extends Controller
      */
     public function update(CenterRequest $request, Center $center)
     {
-
         $center->update($request->all());
 
-        Cache::forget('centers');
+        if ($request->has('logo') && !empty($request->logo)) {
+            $this->saveImage($center, $request->logo, 'logo');
+        }
 
+        Cache::forget('centers');
         return redirect()->route('admin.centers.index')->with('msg_success', __('dashboard.updatedSuccessfully'));
     }
 

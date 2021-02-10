@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('images/logo-100.png') }}" width="30px">
+            {{-- <img src="{{ asset('images/logo.png') }}" width="30px"> --}}
         </a>
         <ul class="nav navbar-nav hidden-md-down">
             <li class="nav-item">

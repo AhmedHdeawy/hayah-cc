@@ -8,7 +8,7 @@
     <div class="col-md-9">
 
         @php
-        $status = old('status', isset($center) ? $center->status : 1);
+        $status = old('status', isset($centerBranch) ? $centerBranch->status : 1);
         @endphp
 
         <label class="radio-inline" for="active">
@@ -29,6 +29,27 @@
 </div>
 
 <div class="form-group row">
+      <label class="col-md-3 form-control-label" for="centers"> {{ __('dashboard.centers') }} </label>
+      <div class="col-md-9">
+        <select class="form-control select2 {{ $errors->first('category_id') ? 'is-invalid' : '' }}" id="centers" name="center_id"
+           placeholder="{{ __('dashboard.centers') }}">
+            <option value=""></option>
+            @foreach ($centers as $center)
+                <option value="{{ $center->id }}"
+                    {{ isset($centerBranch) && $centerBranch->center_id == $center->id ? 'selected' : '' }}>{{ $center->name }}
+                </option>
+            @endforeach
+        </select>
+
+          @if ($errors->first('center_id'))
+            <div class="invalid-feedback text-danger">{{ $errors->first('center_id') }}</div>
+          @endif
+
+      </div>
+</div>
+
+
+<div class="form-group row">
       <label class="col-md-3 form-control-label" for="categories"> {{ __('dashboard.categories') }} </label>
       <div class="col-md-9">
         <select class="form-control select2 {{ $errors->first('category_id') ? 'is-invalid' : '' }}" id="categories" name="category_id"
@@ -36,7 +57,7 @@
             <option value=""></option>
             @foreach ($categories as $category)
                 <option value="{{ $category->id }}"
-                    {{ isset($center) && $center->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}
+                    {{ isset($centerBranch) && $centerBranch->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}
                 </option>
             @endforeach
         </select>
@@ -57,7 +78,7 @@
             <option value=""></option>
             @foreach ($governorates as $governorate)
                 <option value="{{ $governorate->id }}"
-                    {{ isset($center) && $center->governorate_id == $governorate->id ? 'selected' : '' }}>{{ $governorate->name }}
+                    {{ isset($centerBranch) && $centerBranch->governorate_id == $governorate->id ? 'selected' : '' }}>{{ $governorate->name }}
                 </option>
             @endforeach
         </select>
@@ -78,7 +99,7 @@
             <option value=""></option>
             @foreach ($cities as $city)
                 <option value="{{ $city->id }}"
-                    {{ isset($center) && $center->city_id == $city->id ? 'selected' : '' }}>{{ $city->name }}
+                    {{ isset($centerBranch) && $centerBranch->city_id == $city->id ? 'selected' : '' }}>{{ $city->name }}
                 </option>
             @endforeach
         </select>
@@ -96,7 +117,7 @@
 
         <input type="text" id="hours" name="hours"
             class="form-control {{ $errors->first('hours') ? 'is-invalid' : '' }}"
-            value="{{ old('hours', isset($center) ? $center->hours : '') }}"
+            value="{{ old('hours', isset($centerBranch) ? $centerBranch->hours : '') }}"
             placeholder="{{ __('dashboard.hours') }}">
 
         @if ($errors->first('hours'))
@@ -112,7 +133,7 @@
 
         <input type="text" id="phone" name="phone"
             class="form-control {{ $errors->first('phone') ? 'is-invalid' : '' }}"
-            value="{{ old('phone', isset($center) ? $center->phone : '') }}"
+            value="{{ old('phone', isset($centerBranch) ? $centerBranch->phone : '') }}"
             placeholder="{{ __('dashboard.phone') }}">
 
         @if ($errors->first('phone'))
@@ -127,7 +148,7 @@
     <div class="col-md-9">
         <input type="text" id="discount_value" name="discount_value"
             class="form-control {{ $errors->first('discount_value') ? 'is-invalid' : '' }}"
-            value="{{ old('discount_value', isset($center) ? $center->discount_value : '') }}"
+            value="{{ old('discount_value', isset($centerBranch) ? $centerBranch->discount_value : '') }}"
             placeholder="{{ __('dashboard.discount_value') }}">
         @if ($errors->first('discount_value'))
             <div class="invalid-feedback text-danger">{{ $errors->first('discount_value') }}</div>
@@ -141,7 +162,7 @@
 
         <input type="text" id="latitude" name="latitude"
             class="form-control {{ $errors->first('latitude') ? 'is-invalid' : '' }}"
-            value="{{ old('latitude', isset($center) ? $center->latitude : '') }}"
+            value="{{ old('latitude', isset($centerBranch) ? $centerBranch->latitude : '') }}"
             placeholder="{{ __('dashboard.latitude') }}">
 
         @if ($errors->first('latitude'))
@@ -157,7 +178,7 @@
 
         <input type="text" id="longitude" name="longitude"
             class="form-control {{ $errors->first('longitude') ? 'is-invalid' : '' }}"
-            value="{{ old('longitude', isset($center) ? $center->longitude : '') }}"
+            value="{{ old('longitude', isset($centerBranch) ? $centerBranch->longitude : '') }}"
             placeholder="{{ __('dashboard.longitude') }}">
 
         @if ($errors->first('longitude'))
@@ -173,26 +194,10 @@
 
         <textarea type="text" id="notes" name="notes"
             class="form-control {{ $errors->first('notes') ? 'is-invalid' : '' }}"
-            placeholder="{{ __('dashboard.notes') }}">{{ old('notes', isset($center) ? $center->notes : '') }}</textarea>
+            placeholder="{{ __('dashboard.notes') }}">{{ old('notes', isset($centerBranch) ? $centerBranch->notes : '') }}</textarea>
 
         @if ($errors->first('notes'))
         <div class="invalid-feedback text-danger">{{ $errors->first('notes') }}</div>
-        @endif
-
-    </div>
-</div>
-
-
-<div class="form-group row">
-    <label class="col-md-3 form-control-label" for="logo"> {{ __('dashboard.image') }} </label>
-    <div class="col-md-9">
-
-        @include('dashboard.includes.uploadImage',
-        ['name' => 'logo', 'value' => isset($center) ? $center->logo_url : null, 'path' => 'uploads/centers/']
-        )
-
-        @if ($errors->first('logo'))
-        <div class="invalid-feedback text-danger">{{ $errors->first('logo') }}</div>
         @endif
 
     </div>
@@ -212,7 +217,7 @@
 
         <textarea type="text" id="{{ $languag->locale }}[name]" name="{{ $languag->locale }}[name]"
             class="form-control {{ $errors->first($languag->locale .'.name') ? 'is-invalid' : '' }}"
-            placeholder="{{ __('dashboard.name') }}">{{ old($languag->locale .'name', isset($center) ? $center->translate($languag->locale)->name : '') }}</textarea>
+            placeholder="{{ __('dashboard.name') }}">{{ old($languag->locale .'name', isset($centerBranch) ? $centerBranch->translate($languag->locale)->name : '') }}</textarea>
 
         @if ($errors->first($languag->locale .'.name'))
         <div class="invalid-feedback text-danger">{{ $errors->first($languag->locale .'.name') }}</div>
@@ -227,7 +232,7 @@
 
         <textarea type="text" id="{{ $languag->locale }}[address]" name="{{ $languag->locale }}[address]"
             class="form-control {{ $errors->first($languag->locale .'.address') ? 'is-invalid' : '' }}"
-            placeholder="{{ __('dashboard.address') }}">{{ old($languag->locale .'address', isset($center) ? $center->translate($languag->locale)->address : '') }}</textarea>
+            placeholder="{{ __('dashboard.address') }}">{{ old($languag->locale .'address', isset($centerBranch) ? $centerBranch->translate($languag->locale)->address : '') }}</textarea>
 
         @if ($errors->first($languag->locale .'.address'))
         <div class="invalid-feedback text-danger">{{ $errors->first($languag->locale .'.address') }}</div>
@@ -242,7 +247,7 @@
 
         <textarea type="text" id="{{ $languag->locale }}[coupon]" name="{{ $languag->locale }}[coupon]"
             class="form-control {{ $errors->first($languag->locale .'.coupon') ? 'is-invalid' : '' }}"
-            placeholder="{{ __('dashboard.coupon') }}">{{ old($languag->locale .'coupon', isset($center) ? $center->translate($languag->locale)->coupon : '') }}</textarea>
+            placeholder="{{ __('dashboard.coupon') }}">{{ old($languag->locale .'coupon', isset($centerBranch) ? $centerBranch->translate($languag->locale)->coupon : '') }}</textarea>
 
         @if ($errors->first($languag->locale .'.coupon'))
         <div class="invalid-feedback text-danger">{{ $errors->first($languag->locale .'.coupon') }}</div>

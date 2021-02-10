@@ -61,6 +61,9 @@ class CategoriesController extends Controller
     {
         $category = Category::create($request->all());
 
+        if ($request->has('image') && !empty($request->image)) {
+            $this->saveImage($category, $request->image, 'image');
+        }
         Cache::forget('categories');
 
         return redirect()->route('admin.categories.index')->with('msg_success', __('dashboard.createdSuccessfully'));
@@ -100,8 +103,11 @@ class CategoriesController extends Controller
      */
     public function update(CategoryRequest $request, Category $category)
     {
-
         $category->update($request->all());
+
+        if ($request->has('image') && !empty($request->image)) {
+            $this->saveImage($category, $request->image, 'image');
+        }
 
         Cache::forget('categories');
 

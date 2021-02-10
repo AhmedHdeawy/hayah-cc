@@ -68,7 +68,7 @@
             </div>
             <div class="card-footer">
                 <a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-warning">
-                  Edit
+                  {{ __('dashboard.edit') }}
                 </a>
 
                 <a href="{{ route('admin.roles.index') }}" class="btn btn-secondary">

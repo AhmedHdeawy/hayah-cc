@@ -42,7 +42,7 @@
             </div>
             <div class="card-footer">
                 <a href="{{ route('admin.countries.edit', $country->id) }}" class="btn btn-warning">
-                  Edit
+                  {{ __('dashboard.edit') }}
                 </a>
 
                 <a href="{{ route('admin.countries.index') }}" class="btn btn-secondary">

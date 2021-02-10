@@ -148,6 +148,8 @@ return [
     'hours'    =>  'الساعات',
     'latitude'  =>  'خط العرض',
     'longitude'  =>  'خط الطول',
+    'center-branches'   =>  'الفروع',
+    'center-branch'   =>  'الفرع',
 
     /**
      * Departments

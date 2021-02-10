@@ -188,6 +188,13 @@ return [
         'permissions'   =>  'الصلاحيات',
         'roles'     =>  'الادوار',
 
+        'discount_value'    =>  'قيمة الخصم',
+        'latitude'    =>  'نقطة العرض',
+        'longitude'    =>  'نقطة الطول',
+        'logo'    =>  'الصورة',
+        'city_id'    =>  'المدينة',
+        'governorate_id'    =>  'المحافظة',
+
         /**
          * Post
          */

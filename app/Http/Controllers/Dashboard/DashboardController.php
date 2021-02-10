@@ -8,7 +8,9 @@ use App\Models\Category;
 use App\Models\Governorate;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Card;
 use App\Models\Center;
+use Illuminate\Support\Facades\Log;
 
 class DashboardController extends Controller
 {
@@ -20,15 +22,44 @@ class DashboardController extends Controller
     public function index()
     {
         $db = json_decode(file_get_contents(database_path('hayah-care-export.json')), true);
-
-        // $this->Cities($db);
+        // dd($db);
+        // $this->Cards($db);
 
         // dd($db['centers'][0]['branches']);
-
 
         dd("None");
 
         return view('dashboard.dashboard.home');
+    }
+
+    public function Cards($db)
+    {
+        foreach ($db['id_cards'] as $item) {
+            if (isset($item['card_id'])) {
+
+                if (isset($item['start_date'])) {
+
+                    $start = $item['start_date'];
+                } elseif (isset($item['start_day'])) {
+                    $start =  $item['start_day'];
+                } elseif (isset($item['start date'])) {
+                    $start = $item['start date'];
+                } else {
+                    $start = $item['start_id'];
+                }
+
+                $end = isset($item['end_date']) ? $item['end_date'] : $item['end_day'];
+
+                $data = [
+                    'card_id' => $item['card_id'],
+                    'start_date' => $start,
+                    'end_date' => $end,
+                    'notes' => $item['notes'] ?? null,
+                ];
+
+                Card::create($data);
+            }
+        }
     }
 
     public function Cities($db)
@@ -71,7 +102,6 @@ class DashboardController extends Controller
         for ($i = 1; $i < count($db['categories']) - 1; $i++) {
             $category = $db['categories'][$i];
             $data = [
-                'id' => $category['id'],
                 'image' => $category['icon_url'],
                 'ar' => [
                     'name' => $category['name_ar']

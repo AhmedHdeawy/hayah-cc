@@ -42,7 +42,7 @@
             </div>
             <div class="card-footer">
                 <a href="{{ route('admin.governorates.edit', $governorate->id) }}" class="btn btn-warning">
-                  Edit
+                  {{ __('dashboard.edit') }}
                 </a>
 
                 <a href="{{ route('admin.governorates.index') }}" class="btn btn-secondary">

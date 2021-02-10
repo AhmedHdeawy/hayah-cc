@@ -195,6 +195,13 @@ return [
         'permissions'   =>  'Permissions',
         'roles'     =>  'Roles',
 
+        'discount_value'    =>  'Discount Value',
+        'latitude'    =>  'Latitude',
+        'longitude'    =>  'Longitude',
+        'logo'    =>  'Logo',
+        'city_id'    =>  'City',
+        'governorate_id'    =>  'Governorate',
+
         /**
          * Post
          */

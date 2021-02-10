@@ -113,6 +113,8 @@ return [
     'saveNewPassword'   =>  'حفظ كلمة المرور الجديدة',
     'message'   =>  'الرسالة',
 
+    'invalidCardId' =>  'رقم الكارت غير صالح',
+
 
     'search'    =>  'بحث',
     'reset'     =>  'تفريغ',

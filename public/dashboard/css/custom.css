@@ -9,7 +9,7 @@
 }
 
 header.navbar a.navbar-brand {
-	background-image: url('../img/logo.png') !important;
+	background-image: url('../../images/logo.png') !important;
 	background-size: 45px auto;
 }
 

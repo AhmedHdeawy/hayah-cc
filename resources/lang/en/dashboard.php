@@ -202,6 +202,8 @@ return [
     'hour_price'    =>  'Hour Price',
     'latitude'  =>  'Latitude',
     'longitude'  =>  'Longitude',
+    'center-branches'   =>  'Branches',
+    'center-branch'   =>  'Branch',
 
     /**
      * Infos

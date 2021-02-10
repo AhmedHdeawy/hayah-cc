@@ -44,8 +44,11 @@ Route::prefix(LaravelLocalization::setLocale() . '/admin')
             Route::resource('cities', 'CitiesController');
 
 
-            // Cities Routes
+            // Centers Routes
             Route::resource('centers', 'CentersController');
+
+            // CenterBranches Routes
+            Route::resource('center-branches', 'CenterBranchesController');
 
             // Users Routes
             Route::resource('users', 'UsersController');

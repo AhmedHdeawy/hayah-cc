@@ -50,7 +50,7 @@
             </div>
             <div class="card-footer">
                 <a href="{{ route('admin.cities.edit', $city->id) }}" class="btn btn-warning">
-                  Edit
+                  {{ __('dashboard.edit') }}
                 </a>
 
                 <a href="{{ route('admin.cities.index') }}" class="btn btn-secondary">

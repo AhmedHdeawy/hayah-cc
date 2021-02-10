@@ -27,7 +27,7 @@ class Center extends Model implements TranslatableContract
      * fillable attributes
      */
     protected $fillable = ['discount_value', 'hours', 'latitude', 'longitude', 'notes', 'phone', 'logo',
-            'category_id', 'governorate_id', 'city_id', 'status', 'governorate_id'];
+            'category_id', 'governorate_id', 'city_id', 'status'];
 
     /**
      * The accessors to append to the model's array form.
@@ -39,7 +39,7 @@ class Center extends Model implements TranslatableContract
     /**
      * Get logo url for the category logo.
      */
-    public function getImageUrlAttribute()
+    public function getLogoUrlAttribute()
     {
         if (!$this->logo) {
             return null;

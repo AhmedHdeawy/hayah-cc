@@ -110,6 +110,8 @@ return [
     'saveNewPassword'   =>  'Save New Password',
     'message'   =>  'Message',
 
+    'invalidCardId' =>  'Invalid Card ID',
+
 
     'createdSuccessfully'   =>  'Created Successfully',
     'updatedSuccessfully'   =>  'Updated Successfully',

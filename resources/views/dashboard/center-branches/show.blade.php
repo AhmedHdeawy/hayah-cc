@@ -3,7 +3,7 @@
 
 @section('breadcrumb')
     <li class="breadcrumb-item">{{ __('dashboard.home') }}</li>
-    <li class="breadcrumb-item"><a href="{{ route('admin.centers.index') }}">{{ __('dashboard.centers') }}</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.center-branches.index') }}">{{ __('dashboard.center-branches') }}</a></li>
       <li class="breadcrumb-item active">{{ __('dashboard.show') }}</li>
 @endsection
 
@@ -17,10 +17,10 @@
 
                 <div class="row show-details-row">
                     <div class="col-sm-2">
-                        {{ __('dashboard.image') }} :
+                        {{ __('dashboard.center') }} :
                     </div>
                     <div class="col-sm-10">
-                        <img src="{{ $center->logo_url }}" width="80px">
+                        {{ $centerBranch->center->name }}
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@
                         {{ __('dashboard.name') }} :
                     </div>
                     <div class="col-sm-10">
-                        {{ $center->translate($showLang)->name }}
+                        {{ $centerBranch->translate($showLang)->name }}
                     </div>
                 </div>
 
@@ -39,7 +39,7 @@
                         {{ __('dashboard.address') }} :
                     </div>
                     <div class="col-sm-10">
-                        {{ $center->translate($showLang)->address }}
+                        {{ $centerBranch->translate($showLang)->address }}
                     </div>
                 </div>
 
@@ -48,7 +48,7 @@
                         {{ __('dashboard.coupon') }} :
                     </div>
                     <div class="col-sm-10">
-                        {{ $center->translate($showLang)->coupon }}
+                        {{ $centerBranch->translate($showLang)->coupon }}
                     </div>
                 </div>
 
@@ -57,7 +57,7 @@
                         {{ __('dashboard.discount_value') }} :
                     </div>
                     <div class="col-sm-10">
-                        {{ $center->discount_value }}
+                        {{ $centerBranch->discount_value }}
                     </div>
                 </div>
 
@@ -66,7 +66,7 @@
                         {{ __('dashboard.hours') }} :
                     </div>
                     <div class="col-sm-10">
-                        {{ $center->hours }}
+                        {{ $centerBranch->hours }}
                     </div>
                 </div>
 
@@ -75,7 +75,7 @@
                         {{ __('dashboard.phone') }} :
                     </div>
                     <div class="col-sm-10">
-                        {{ $center->phone }}
+                        {{ $centerBranch->phone }}
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@
                         {{ __('dashboard.category') }} :
                     </div>
                     <div class="col-sm-10">
-                        {{ $center->category->name }}
+                        {{ $centerBranch->category->name }}
                     </div>
                 </div>
 
@@ -93,7 +93,7 @@
                         {{ __('dashboard.governorate') }} :
                     </div>
                     <div class="col-sm-10">
-                        {{ $center->governorate->name }}
+                        {{ $centerBranch->governorate->name }}
                     </div>
                 </div>
 
@@ -102,7 +102,7 @@
                         {{ __('dashboard.city') }} :
                     </div>
                     <div class="col-sm-10">
-                        {{ $center->city->name }}
+                        {{ $centerBranch->city->name }}
                     </div>
                 </div>
 
@@ -111,37 +111,20 @@
                         {{ __('dashboard.status') }} :
                     </div>
                     <div class="col-sm-10">
-                        @if($center->status == 1)
+                        @if($centerBranch->status == 1)
                             <strong class="text-success">{{ __('dashboard.'.$showLang.'.active') }}</strong>
                         @else
                             <strong class="text-danger">{{ __('dashboard.'.$showLang.'.stopped') }}</strong>
                         @endif
                     </div>
                 </div>
-
-                <div class="row show-details-row">
-                    <div class="col-sm-2">
-                        {{ __('dashboard.addresses') }} :
-                    </div>
-                    <div class="col-sm-10">
-                        @foreach ($center->branches as $branch)
-                            @if ($loop->last)
-                                {{ $branch->name }}
-                            @else
-                                {{ $branch->name }} -
-                            @endif
-                        @endforeach
-                    </div>
-                </div>
-
-
             </div>
             <div class="card-footer">
-                <a href="{{ route('admin.centers.edit', $center->id) }}" class="btn btn-warning">
+                <a href="{{ route('admin.center-branches.edit', $centerBranch->id) }}" class="btn btn-warning">
                   {{ __('dashboard.edit') }}
                 </a>
 
-                <a href="{{ route('admin.centers.index') }}" class="btn btn-secondary">
+                <a href="{{ route('admin.center-branches.index') }}" class="btn btn-secondary">
                   {{ __('dashboard.back') }}
                 </a>
             </div>

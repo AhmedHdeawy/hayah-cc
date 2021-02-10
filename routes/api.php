@@ -13,4 +13,15 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', 'SomeController@Somemethod');
+Route::group(['namespace' => 'Api'], function () {
+
+    Route::post('/login', 'AuthController@login');
+
+
+    // Discussions
+    Route::get('/categories', 'AppController@categories')->name('categories.index');
+    Route::get('/governorates', 'AppController@governorates')->name('governorates.index');
+    Route::get('/cities', 'AppController@cities')->name('cities.index');
+    Route::get('/centers', 'AppController@centers')->name('centers.index');
+
+});

@@ -81,7 +81,7 @@
             </div>
             <div class="card-footer">
                 <a href="{{ route('admin.clients.edit', $client->id) }}" class="btn btn-warning">
-                  Edit
+                  {{ __('dashboard.edit') }}
                 </a>
 
                 <a href="{{ route('admin.clients.index') }}" class="btn btn-secondary">

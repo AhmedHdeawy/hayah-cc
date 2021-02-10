@@ -26,7 +26,7 @@ class CenterBranch extends Model implements TranslatableContract
      * fillable attributes
      */
     protected $fillable = ['discount_value', 'hours', 'latitude', 'longitude', 'notes', 'phone', 'logo', 'center_id',
-            'category_id', 'governorate_id', 'city_id', 'status', 'governorate_id'];
+            'category_id', 'city_id', 'status', 'governorate_id'];
 
     /**
      * Info that belongs To
@@ -35,7 +35,6 @@ class CenterBranch extends Model implements TranslatableContract
     {
         return $this->belongsTo('App\Models\Center', 'center_id', 'id');
     }
-
 
     /**
      * Info that belongs To
