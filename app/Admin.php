@@ -13,10 +13,10 @@ use Spatie\Permission\Traits\HasPermissions;
 
 class Admin extends Authenticatable
 {
-    use Notifiable, HasRoles, HasPermissions;
+    use Notifiable, HasRoles;
 
     protected $guard_name = 'admin';
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -47,5 +47,5 @@ class Admin extends Authenticatable
             $this->attributes['password'] = Hash::make($value);
         }
     }
-    
+
 }
