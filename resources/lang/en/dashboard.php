@@ -206,6 +206,15 @@ return [
     'center-branch'   =>  'Branch',
 
     /**
+     * Cards
+     */
+    'cards'     =>  'Cards',
+    'card'     =>  'Card',
+    'card_id'   =>  'Card ID',
+    'start_date'   =>  'Start at',
+    'end_date'   =>  'End at',
+
+    /**
      * Infos
      */
     'infos'  =>  'Information',

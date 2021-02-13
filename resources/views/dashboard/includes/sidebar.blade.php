@@ -50,6 +50,15 @@
             </li>
             @endif
 
+            @if(auth('admin')->user()->can('admin.cards.view'))
+            <li class="nav-item">
+                <a class="nav-link {{ $segment == 'cards' ? 'active' : '' }}" href="{{ route('admin.cards.index') }}">
+                    <i class="icon-credit-card"></i> {{ __('dashboard.cards') }}
+                </a>
+            </li>
+            @endif
+
+
             @if(auth('admin')->user()->can('admin.admins.view'))
             <li class="nav-item">
                 <a class="nav-link {{ $segment == 'admins' ? 'active' : '' }}" href="{{ route('admin.admins.index') }}">

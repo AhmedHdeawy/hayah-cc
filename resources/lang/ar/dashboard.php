@@ -152,6 +152,16 @@ return [
     'center-branch'   =>  'الفرع',
 
     /**
+     * Cards
+     */
+    'cards'     =>  'الكروت',
+    'card'     =>  'الكارت',
+    'card_id'   =>  'رقم الكارت',
+    'start_date'   =>  'تاريخ البدء',
+    'end_date'   =>  'تاريخ الانتهاء',
+
+
+    /**
      * Departments
      */
     'departments'    =>  'الاقسام',

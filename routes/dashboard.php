@@ -34,15 +34,11 @@ Route::prefix(LaravelLocalization::setLocale() . '/admin')
             // Categories Routes
             Route::resource('categories', 'CategoriesController');
 
-            // Clients Routes
-            Route::resource('clients', 'ClientsController');
-
             // Governorates Routes
             Route::resource('governorates', 'GovernoratesController');
 
             // Cities Routes
             Route::resource('cities', 'CitiesController');
-
 
             // Centers Routes
             Route::resource('centers', 'CentersController');
@@ -50,8 +46,8 @@ Route::prefix(LaravelLocalization::setLocale() . '/admin')
             // CenterBranches Routes
             Route::resource('center-branches', 'CenterBranchesController');
 
-            // Users Routes
-            Route::resource('users', 'UsersController');
+            // Cards Routes
+            Route::resource('cards', 'CardsController');
 
             // Admins Routes
             Route::resource('admins', 'AdminsController');
@@ -59,8 +55,6 @@ Route::prefix(LaravelLocalization::setLocale() . '/admin')
             // Roles Routes
             Route::resource('roles', 'RolesController');
             Route::get('permissions', 'RolesController@permissions')->name('roles.permissions');
-
-
         });
 
         // Admin Logout Route

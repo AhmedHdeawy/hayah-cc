@@ -1,9 +1,7 @@
 <header class="navbar">
     <div class="container-fluid">
         <button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
-        <a class="navbar-brand" href="{{ url('/') }}">
-            {{-- <img src="{{ asset('images/logo.png') }}" width="30px"> --}}
-        </a>
+        <a class="navbar-brand" href="{{ url('/') }}"></a>
         <ul class="nav navbar-nav hidden-md-down">
             <li class="nav-item">
                 <a class="nav-link navbar-toggler layout-toggler" href="#">&#9776;</a>
@@ -33,8 +31,6 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ route('admin.admins.edit', auth()->guard('admin')->id()) }}"><i class="fa fa-user"></i> {{ __('dashboard.profile') }} </a>
-
                     <form action="{{ route('admin.logout') }}" method="post">
                         @csrf
                         <button type="submit" class="dropdown-item">
