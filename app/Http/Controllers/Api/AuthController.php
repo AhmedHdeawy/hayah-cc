@@ -29,7 +29,7 @@ class AuthController extends Controller
             'device_token'   =>  'required',
         ]);
 
-        $card = Card::find($request->card_id);
+        $card = Card::where('card_id', $request->card_id)->first();
 
         if (!$card) {
             return $this->jsonResponse(404, __('lang.invalidCardId'), __('lang.invalidCardId'), null);

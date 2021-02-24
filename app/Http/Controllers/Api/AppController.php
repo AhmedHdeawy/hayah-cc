@@ -60,7 +60,7 @@ class AppController extends Controller
      */
     public function centers(Request $request)
     {
-        $query = Center::latest();
+        $query = Center::with(['city', 'category', 'governorate'])->latest();
 
         if ($request->has('category_id') && !empty($request->has('category_id'))) {
             $query->where('category_id', $request->category_id);

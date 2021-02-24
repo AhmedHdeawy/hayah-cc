@@ -17,12 +17,4 @@ class Device extends Model
      * fillable attributes
      */
     protected $fillable = ['device_id', 'device_token'];
-
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = ['expired'];
-
 }

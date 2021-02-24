@@ -26,6 +26,12 @@ class Center extends JsonResource
             'phone' => $this->phone,
             'notes' => $this->notes,
             'logo_url' => $this->logo_url,
+            'city_id' => $this->city ? $this->city->id : null,
+            'city_name' => $this->city ? $this->city->name : null,
+            'category_id' => $this->category ? $this->category->id : null,
+            'category_name' => $this->category ? $this->category->name : null,
+            'governorate_id' => $this->governorate ? $this->governorate->id : null,
+            'governorate_name' => $this->governorate ? $this->governorate->name : null,
             'branches' => Branch::collection($this->branches),
         ];
     }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Card extends Model
@@ -25,4 +26,11 @@ class Card extends Model
      */
     protected $appends = ['expired'];
 
+    public function getExpiredAttribute()
+    {
+        if (now() > Carbon::createFromFormat('d-m-Y', $this->end_date)) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -17,6 +17,8 @@ class City extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'governorate_id' => $this->governorate ? $this->governorate->id : null,
+            'governorate_name' => $this->governorate ? $this->governorate->name : null,
         ];
     }
 }
