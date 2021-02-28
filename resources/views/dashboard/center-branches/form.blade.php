@@ -28,6 +28,21 @@
     </div>
 </div>
 
+<div class="form-group row mb-5">
+      <label class="col-md-3 form-control-label" for="logo"> {{ __('dashboard.image') }} </label>
+      <div class="col-md-9">
+
+          @include('dashboard.includes.uploadImage',
+            ['name' => 'logo', 'value' => isset($centerBranch) ? $centerBranch->logo : null, 'path' => 'storage/']
+            )
+
+          @if ($errors->first('logo'))
+            <div class="invalid-feedback text-danger">{{ $errors->first('logo') }}</div>
+          @endif
+
+      </div>
+</div>
+
 <div class="form-group row">
       <label class="col-md-3 form-control-label" for="centers"> {{ __('dashboard.centers') }} </label>
       <div class="col-md-9">
