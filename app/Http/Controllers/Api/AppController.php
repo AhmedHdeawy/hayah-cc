@@ -3,17 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use Validator;
+use App\Models\City;
+use App\Models\Center;
+use App\Models\Category;
+use App\Models\Governorate;
 use Illuminate\Http\Request;
 use App\Http\Traits\JsonResponse;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Category as ResourcesCategory;
-use App\Http\Resources\Center as ResourcesCenter;
 use App\Http\Resources\City as ResourcesCity;
+use App\Http\Resources\Center as ResourcesCenter;
+use App\Http\Resources\Category as ResourcesCategory;
 use App\Http\Resources\Governorate as ResourcesGovernorate;
-use App\Models\Category;
-use App\Models\Center;
-use App\Models\City;
-use App\Models\Governorate;
 
 class AppController extends Controller
 {
@@ -75,6 +76,37 @@ class AppController extends Controller
         }
 
         $centers =  ResourcesCenter::collection($query->paginate());
+
+        return $this->jsonResponse(200, 'Done', null, $centers);
+    }
+    
+    
+    /**
+     * Get All Nearest Centers
+     *
+     */
+    public function nearestCenters(Request $request)
+    {
+
+        // Initial Query
+        $query = Center::with(['city', 'category', 'governorate'])->latest();
+
+        // Search Discussion in 50KM
+        if ($request->has(['latitude', 'longitude']) && $request->latitude != 0 && $request->longitude != 0) {
+
+            $latitude = $request->latitude;
+            $longitude = $request->longitude;
+
+            $query = $query->select(
+                DB::raw('
+                *, ( 6367 * acos( cos( radians(' . $latitude . ') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(' . $longitude . ') ) + sin( radians(' . $latitude . ') ) * sin( radians( latitude ) ) ) ) AS distanceNearest
+                ')
+            )
+                ->having('distanceNearest', '<', 5)
+                ->orderBy('distanceNearest');
+        }
+
+        $centers =  ResourcesCenter::collection($query->get());
 
         return $this->jsonResponse(200, 'Done', null, $centers);
     }
