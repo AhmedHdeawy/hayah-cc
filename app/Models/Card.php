@@ -28,7 +28,7 @@ class Card extends Model
 
     public function getExpiredAttribute()
     {
-        if (now() > Carbon::createFromFormat('d-m-Y', $this->end_date)) {
+        if (now() > Carbon::createFromFormat('Y-m-d', $this->end_date)) {
             return false;
         }
         return true;
