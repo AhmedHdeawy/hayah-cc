@@ -35,10 +35,20 @@ class AuthController extends Controller
             return $this->jsonResponse(404, __('lang.invalidCardId'), __('lang.invalidCardId'), null);
         }
 
-        $device = Device::create([
-            'device_id' =>  $request->device_id,
-            'device_token' =>  $request->device_token,
-        ]);
+        $device = Device::where('device_id', $request->device_id)->first();
+        if ($device) {
+
+            $device->device_token = $request->device_token;
+            $device->save();
+
+        } else {
+
+            $device = Device::create([
+                'device_id' =>  $request->device_id,
+                'device_token' =>  $request->device_token,
+            ]);
+        }
+
 
         $data = [
             'card'  =>  $card,
