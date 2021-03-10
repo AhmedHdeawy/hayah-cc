@@ -85,8 +85,6 @@ class CentersController extends Controller
      */
     public function show(Request $request, Center $center)
     {
-        SendBranchNotification::dispatchAfterResponse($center);
-        
         $showLang = $request->showLang;
         
         return view('dashboard.centers.show', compact('center', 'showLang'));
