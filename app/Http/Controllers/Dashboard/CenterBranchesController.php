@@ -68,6 +68,8 @@ class CenterBranchesController extends Controller
 
         Cache::forget('centerBranches');
 
+        SendBranchNotification::dispatchAfterResponse($centerBranch);
+
         return redirect()->route('admin.center-branches.index')->with('msg_success', __('dashboard.createdSuccessfully'));
     }
 
@@ -80,8 +82,6 @@ class CenterBranchesController extends Controller
      */
     public function show(Request $request, CenterBranch $centerBranch)
     {
-        SendBranchNotification::dispatchAfterResponse($centerBranch);
-
         $showLang = $request->showLang;
 
         return view('dashboard.center-branches.show', compact('centerBranch', 'showLang'));
