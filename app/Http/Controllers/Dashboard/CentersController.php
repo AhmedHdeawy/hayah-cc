@@ -10,6 +10,7 @@ use App\Models\Governorate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CenterRequest;
+use App\Jobs\SendBranchNotification;
 use Illuminate\Support\Facades\Cache;
 
 class CentersController extends Controller
@@ -70,6 +71,8 @@ class CentersController extends Controller
 
         Cache::forget('centers');
 
+        SendBranchNotification::dispatchAfterResponse($center);
+
         return redirect()->route('admin.centers.index')->with('msg_success', __('dashboard.createdSuccessfully'));
     }
 
@@ -82,6 +85,8 @@ class CentersController extends Controller
      */
     public function show(Request $request, Center $center)
     {
+        SendBranchNotification::dispatchAfterResponse($center);
+        
         $showLang = $request->showLang;
         return view('dashboard.centers.show', compact('center', 'showLang'));
     }

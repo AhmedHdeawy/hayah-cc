@@ -4,14 +4,15 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Models\City;
 use App\Models\Center;
-use App\Models\CenterBranch;
 use App\Models\Category;
-
 use App\Models\Governorate;
+
+use App\Models\CenterBranch;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CenterBranchRequest;
+use App\Jobs\SendBranchNotification;
 use Illuminate\Support\Facades\Cache;
+use App\Http\Requests\CenterBranchRequest;
 
 class CenterBranchesController extends Controller
 {
@@ -79,6 +80,8 @@ class CenterBranchesController extends Controller
      */
     public function show(Request $request, CenterBranch $centerBranch)
     {
+        SendBranchNotification::dispatchAfterResponse($centerBranch);
+
         $showLang = $request->showLang;
 
         return view('dashboard.center-branches.show', compact('centerBranch', 'showLang'));
