@@ -30,7 +30,7 @@
 
 
     <div class="col-xs-6 col-lg-3">
-        <a href="{{ route('admin.users.index') }}">
+        <a href="{{ route('admin.cards.index') }}">
 	        <div class="card">
 	            <div class="card-block p-a-1 clearfix">
 	                <i class="icon-credit-card bg-success p-a-1 font-2xl m-r-1 {{ LaravelLocalization::getCurrentLocaleDirection() == 'rtl' ? 'pull-right' : 'pull-left' }} "></i>
