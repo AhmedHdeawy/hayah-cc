@@ -49,7 +49,7 @@ class Center extends Model implements TranslatableContract
                 request()->get('latitude'), 
                 request()->get('longitude'),
                 $this->latitude,
-                $this->longitude,
+                $this->longitude
             );
 
             return ceil($distance);
