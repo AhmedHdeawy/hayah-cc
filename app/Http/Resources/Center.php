@@ -16,6 +16,7 @@ class Center extends JsonResource
     {
         return [
             'id' => $this->id,
+            'distance' => $this->distance,
             'name' => $this->name,
             'address' => $this->address,
             'coupon' => $this->coupon,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Validator;
 use App\Models\City;
 use App\Models\Center;
+use App\Models\Device;
 use App\Models\Category;
 use App\Models\Governorate;
 use Illuminate\Http\Request;
@@ -75,7 +76,7 @@ class AppController extends Controller
             $query->where('city_id', $request->city_id);
         }
 
-        $centers =  ResourcesCenter::collection($query->paginate());
+        $centers =  ResourcesCenter::collection($query->paginate()->sortBy('distance'));
 
         return $this->jsonResponse(200, 'Done', null, $centers);
     }
@@ -111,5 +112,21 @@ class AppController extends Controller
         return $this->jsonResponse(200, 'Done', null, $centers);
     }
 
+    public function updateLocation(Request $request)
+    {
+        $request->validate([
+            'device_id'   =>  'required',
+            'latitude'    =>  'required|numeric',
+            'longitude'   =>  'required|numeric',
+        ]);
 
+        $device = Device::where('device_id', $request->device_id)->firstOrFail();
+
+        $device->latitude = $request->latitude;
+        $device->longitude = $request->longitude;
+        $device->save();
+
+        return $this->jsonResponse(200, 'Done', null, $device);
+        
+    }
 }

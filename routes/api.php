@@ -16,9 +16,9 @@ use Illuminate\Http\Request;
 Route::group(['namespace' => 'Api'], function () {
 
     Route::post('/login', 'AuthController@login');
-
-
-    // Discussions
+    
+    
+    Route::post('/updateLocation', 'AppController@updateLocation');
     Route::get('/categories', 'AppController@categories')->name('categories.index');
     Route::get('/governorates', 'AppController@governorates')->name('governorates.index');
     Route::get('/cities', 'AppController@cities')->name('cities.index');
