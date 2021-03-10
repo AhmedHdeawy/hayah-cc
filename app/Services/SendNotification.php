@@ -9,12 +9,12 @@ use LaravelFCM\Message\PayloadNotificationBuilder;
 class SendNotification {
 
     /**
-     * @param array $token
+     * @param array $tokens
      * @param array $data
      * @return bool
      * @throws InvalidOptionsException
      */
-    public static function send(array $token, array $data = [])
+    public static function send(array $tokens, array $data = [])
     {
         $optionBuilder = new OptionsBuilder();
         $optionBuilder->setTimeToLive(60 * 20);
@@ -25,11 +25,15 @@ class SendNotification {
         ->setBody($data['body']);
         $notification = $notificationBuilder->build();
 
-        $downstreamResponse = FCM::sendTo($token, $option, $notification);
+        if (count($tokens)) {
 
-        Log::info('Noti');
-        Log::info($downstreamResponse->numberFailure());
-
-        return $downstreamResponse->numberFailure() == 0;
+            $downstreamResponse = FCM::sendTo($tokens, $option, $notification);
+    
+            Log::info('Noti');
+            Log::info($downstreamResponse->numberFailure());
+            
+            return $downstreamResponse->numberFailure() == 0;
+        }
+        Log::info('No-Noti');
     }
 }
