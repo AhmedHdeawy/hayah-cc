@@ -8,12 +8,14 @@ use App\Models\Center;
 use App\Models\Device;
 use App\Models\Category;
 use App\Models\Governorate;
+use App\Models\CenterBranch;
 use Illuminate\Http\Request;
 use App\Http\Traits\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\City as ResourcesCity;
 use App\Http\Resources\Center as ResourcesCenter;
+use App\Http\Resources\Branch as ResourcesBranch;
 use App\Http\Resources\Category as ResourcesCategory;
 use App\Http\Resources\Governorate as ResourcesGovernorate;
 
@@ -62,7 +64,7 @@ class AppController extends Controller
      */
     public function centers(Request $request)
     {
-        $query = Center::with(['city', 'category', 'governorate'])->latest();
+        $query = Center::active()->with(['city', 'category', 'governorate'])->latest();
 
         if ($request->has('category_id') && !empty($request->category_id)) {
             $query->where('category_id', $request->category_id);
@@ -83,6 +85,32 @@ class AppController extends Controller
     
     
     /**
+     * Get All Branches for the center
+     *
+     */
+    public function branches(Request $request)
+    {
+        $request->validate([
+            'center_id'   =>  'required|numeric',
+        ]);
+
+        $query = CenterBranch::where('center_id', $request->center_id)->active()->with(['city', 'center', 'governorate'])->latest();
+
+        if ($request->has('governorate_id') && !empty($request->governorate_id)) {
+            $query->where('governorate_id', $request->governorate_id);
+        }
+
+        if ($request->has('city_id') && !empty($request->city_id)) {
+            $query->where('city_id', $request->city_id);
+        }
+
+        $centers =  ResourcesBranch::collection($query->paginate()->sortBy('distance'));
+
+        return $this->jsonResponse(200, 'Done', null, $centers);
+    }
+    
+    
+    /**
      * Get All Nearest Centers
      *
      */
@@ -90,7 +118,7 @@ class AppController extends Controller
     {
 
         // Initial Query
-        $query = Center::with(['city', 'category', 'governorate'])->latest();
+        $query = Center::active()->with(['city', 'category', 'governorate'])->latest();
 
         // Search Discussion in 50KM
         if ($request->has(['latitude', 'longitude']) && $request->latitude != 0 && $request->longitude != 0) {

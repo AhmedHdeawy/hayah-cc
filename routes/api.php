@@ -23,6 +23,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('/governorates', 'AppController@governorates')->name('governorates.index');
     Route::get('/cities', 'AppController@cities')->name('cities.index');
     Route::get('/centers', 'AppController@centers')->name('centers.index');
+    Route::get('/branches', 'AppController@branches')->name('branches.index');
     Route::get('/nearest-centers', 'AppController@nearestCenters')->name('nearestCenters.index');
 
 });
