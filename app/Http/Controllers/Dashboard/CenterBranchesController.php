@@ -68,7 +68,7 @@ class CenterBranchesController extends Controller
 
         Cache::forget('centerBranches');
 
-        SendBranchNotification::dispatchAfterResponse($centerBranch);
+        SendBranchNotification::dispatch($centerBranch);
 
         return redirect()->route('admin.center-branches.index')->with('msg_success', __('dashboard.createdSuccessfully'));
     }

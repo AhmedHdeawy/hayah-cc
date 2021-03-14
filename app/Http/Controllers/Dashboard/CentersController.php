@@ -71,7 +71,7 @@ class CentersController extends Controller
 
         Cache::forget('centers');
 
-        SendBranchNotification::dispatchAfterResponse($center);
+        SendBranchNotification::dispatch($center);
 
         return redirect()->route('admin.centers.index')->with('msg_success', __('dashboard.createdSuccessfully'));
     }
@@ -87,7 +87,7 @@ class CentersController extends Controller
     {
         $showLang = $request->showLang;
         
-        SendBranchNotification::dispatchAfterResponse($center)->queue('test');
+        SendBranchNotification::dispatch($center);
         
         return view('dashboard.centers.show', compact('center', 'showLang'));
     }
