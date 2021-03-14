@@ -32,8 +32,7 @@ class Center extends JsonResource
             'category_id' => $this->category ? $this->category->id : null,
             'category_name' => $this->category ? $this->category->name : null,
             'governorate_id' => $this->governorate ? $this->governorate->id : null,
-            'governorate_name' => $this->governorate ? $this->governorate->name : null,
-            'branches' => Branch::collection($this->branches),
+            'governorate_name' => $this->governorate ? $this->governorate->name : null
         ];
     }
 }
