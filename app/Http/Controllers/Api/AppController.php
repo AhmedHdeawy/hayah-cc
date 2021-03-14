@@ -64,15 +64,15 @@ class AppController extends Controller
     {
         $query = Center::with(['city', 'category', 'governorate'])->latest();
 
-        if ($request->has('category_id') && !empty($request->has('category_id'))) {
+        if ($request->has('category_id') && !empty($request->category_id)) {
             $query->where('category_id', $request->category_id);
         }
 
-        if ($request->has('governorate_id') && !empty($request->has('governorate_id'))) {
+        if ($request->has('governorate_id') && !empty($request->governorate_id)) {
             $query->where('governorate_id', $request->governorate_id);
         }
 
-        if ($request->has('city_id') && !empty($request->has('city_id'))) {
+        if ($request->has('city_id') && !empty($request->city_id)) {
             $query->where('city_id', $request->city_id);
         }
 
