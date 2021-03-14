@@ -22,6 +22,7 @@
         "laravel/ui": "^2.4",
         "mcamara/laravel-localization": "^1.6",
         "pbmedia/laravel-ffmpeg": "^7.5",
+        "predis/predis": "^1.1",
         "simplesoftwareio/simple-qrcode": "^4.1",
         "spatie/image": "^1.10",
         "spatie/laravel-permission": "^3.3",
